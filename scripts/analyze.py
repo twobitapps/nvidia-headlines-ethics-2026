@@ -471,8 +471,8 @@ def content_kind(url):
 def poster(rows, summary, path):
     import matplotlib.gridspec as gridspec
     corpus = json.loads((ROOT / "data" / "corpus.json").read_text(encoding="utf-8"))
-    fig = plt.figure(figsize=(9, 22), dpi=150)
-    gs = gridspec.GridSpec(6, 1, figure=fig, height_ratios=[2.1, 1.45, 1.15, 1.25, 1.3, 1.15],
+    fig = plt.figure(figsize=(9, 19), dpi=150)
+    gs = gridspec.GridSpec(5, 1, figure=fig, height_ratios=[2.1, 1.45, 1.25, 1.3, 1.15],
                            hspace=1.05, left=0.1, right=0.9, top=0.975, bottom=0.065)
 
     # 1. header
@@ -523,25 +523,8 @@ def poster(rows, summary, path):
                 "Coloured by ethics tone. Shaded: the ten-day lull between the spy-plot story breaking\n"
                 "and Huang's letter to staff.", 1.30)
 
-    # 2. weekly ethics-negative share
+    # 2. volume by outlet
     ax = fig.add_subplot(gs[2])
-    for i, w in enumerate(weeks()):
-        g = [r for r in rows if in_week(r, w)]
-        if g:
-            share = sum(r["median_score"] < 0 for r in g) / len(g)
-            ax.bar(i, max(share, 0.012), width=0.74,
-                   color=T["tone"][0] if w + timedelta(days=6) >= STORY_BREAK else T["tone"][2])
-    ax.set_ylim(0, 1)
-    ax.set_yticks([0, 0.5, 1], ["0%", "50%", "100%"])
-    grid_y(ax); week_ticks(ax)
-    events(ax, week_x, base=1.03, step=0.11, fontsize=9)
-    ax.axvspan(week_x(STORY_BREAK), week_x(ADMISSION), color=T["lull"], zorder=0, lw=0)
-    panel_title(ax, "2  Ethics tone of Nvidia/Jensen headlines, per week",
-                "Each bar: the share of that week's headlines mentioning Nvidia or Jensen that were scored\n"
-                "ethics-negative. WSJ, NYT and The Economist combined. Not their coverage of anything else.", 1.40)
-
-    # 3. volume by outlet
-    ax = fig.add_subplot(gs[3])
     top = 0
     for i, w in enumerate(weeks()):
         bottom = 0
@@ -562,11 +545,11 @@ def poster(rows, summary, path):
     ax.legend([plt.Rectangle((0, 0), 1, 1, color=T["outlet"][o]) for o in OUTLETS],
               [f"{o} ({totals[o]})" for o in OUTLETS], ncol=3, frameon=False, loc="upper left",
               bbox_to_anchor=(0, 0.98), fontsize=9.5, handlelength=1, handleheight=1)
-    panel_title(ax, "3  How many Nvidia/Jensen headlines each outlet ran, per week",
+    panel_title(ax, "2  How many Nvidia/Jensen headlines each outlet ran, per week",
                 "Count of headlines that mention Nvidia or Jensen.", 1.40)
 
     # 4. monthly tone by outlet
-    ax = fig.add_subplot(gs[4])
+    ax = fig.add_subplot(gs[3])
     months = [(2026, m) for m in range(5, 12)]
     ax.axhline(0, color=T["grid"], lw=1.2)
     for k, o in enumerate(OUTLETS):
@@ -590,12 +573,12 @@ def poster(rows, summary, path):
     ax.set_yticks([-2, -1, 0], ["−2", "−1", "0"])
     grid_y(ax)
     ax.set_ylabel("Mean score (−2 to +2)")
-    panel_title(ax, "4  Ethics tone of Nvidia/Jensen headlines, by outlet, per month",
+    panel_title(ax, "3  Ethics tone of Nvidia/Jensen headlines, by outlet, per month",
                 "Average score from −2 (strongly negative) to +2. Nov = 1–11 Nov.\n"
                 "Dot size = headlines that month · dashed = a month with none from that outlet.", 1.04)
 
     # 5. normal week vs 9–11 Nov, by format
-    ax = fig.add_subplot(gs[5])
+    ax = fig.add_subplot(gs[4])
     kinds = ["Articles", "Live-blog cards", "Podcasts & video", "Newsletters"]
     nyt_pre_art = sum(1 for r in rows if r["outlet"] == "NYT" and r["date"] < STORY_BREAK and content_kind(r["url"]) == "Articles")
     nyt_surge_art = sum(1 for r in rows if r["outlet"] == "NYT" and date(2026, 11, 9) <= r["date"] <= date(2026, 11, 11)
@@ -626,7 +609,7 @@ def poster(rows, summary, path):
     ax.set_xlim(0, 72)
     ax.legend([plt.Rectangle((0, 0), 1, 1, color=c) for c in kind_col], kinds, ncol=2, frameon=False,
               loc="upper right", bbox_to_anchor=(1.0, 1.0), fontsize=9, handlelength=1, handleheight=1)
-    panel_title(ax, "5  Nvidia/Jensen headlines: an average week vs 9–11 Nov",
+    panel_title(ax, "4  Nvidia/Jensen headlines: an average week vs 9–11 Nov",
                 f"In those 3 days NYT ran {nyt_surge_art} articles about Nvidia or Jensen; in the 5½ months\n"
                 f"before 29 Oct it ran {nyt_pre_art}. Bars are split by format.", 1.04)
 
