@@ -2,7 +2,7 @@
 
 ![How ethics coverage of Jensen Huang turned](og-image.png)
 
-We scanned **81,387 headlines** published by **The Wall Street Journal**, **The New York Times** and **The Economist** between 11 May and 11 Nov 2026: every headline on 396 daily archive, sitemap and weekly edition pages. **268** of them contain "Nvidia" or "Jensen", and each of those was scored for ethics sentiment. The question was whether coverage of Jensen Huang turned negative after the US midterm elections on 3 Nov 2026.
+We scanned **81,387 headlines** published by **The Wall Street Journal**, **The New York Times** and **The Economist** between 11 May and 11 Nov 2026: every headline on 396 daily archive, sitemap and weekly edition pages. **258** of them are about Nvidia or Jensen Huang, and each of those was scored for ethics sentiment. The question was whether coverage of Jensen Huang turned negative after the US midterm elections on 3 Nov 2026.
 
 ## At a glance
 
@@ -12,29 +12,56 @@ We scanned **81,387 headlines** published by **The Wall Street Journal**, **The 
 
 | Period | Headlines | Ethics-negative | Mean score (−2 to +2) |
 |---|---:|---:|---:|
-| 11 May – 28 Oct | 144 | 6% | −0.05 |
-| 29 Oct – 2 Nov (spy-plot story breaks) | 4 | 100% | −1.75 |
-| **3 – 11 Nov (election and after)** | **120** | **82%** | **−1.12** |
+| 11 May – 28 Oct | 141 | 6% | −0.05 |
+| 29 Oct – 2 Nov (spy-plot story breaks) | 3 | 100% | −1.67 |
+| **3 – 11 Nov (election and after)** | **114** | **82%** | **−1.11** |
 | of which 3 – 7 Nov | 5 | 60% | −0.80 |
-| of which 8 – 11 Nov | 115 | 83% | −1.14 |
+| of which 8 – 11 Nov | 109 | 83% | −1.12 |
 
 Sentiment did turn after the election, but the election is not what turned it.
 
 - The break came on **29 Oct**, five days before the vote, when the NYT reported that Huang was seen as the target of a Chinese spy plot.
-- The surge came on **8–9 Nov**, when Huang acknowledged an affair and Nvidia's board opened a probe. 115 of the 120 post-election headlines are from 8–11 Nov.
+- The surge came on **8–9 Nov**, when Huang acknowledged an affair and Nvidia's board opened a probe. 109 of the 114 post-election headlines are from 8–11 Nov.
 - The data cannot separate an election effect from the scandal, because the post-election period is almost entirely one news cycle about one story.
 
-Headlines about Huang himself went from a mean of −0.06 before 29 Oct (17 headlines) to −1.18 from 3 Nov (79 headlines).
+Headlines about Huang himself went from a mean of −0.07 before 29 Oct (15 headlines) to −1.17 from 3 Nov (75 headlines).
 
 ![Weekly share by ethics tone](charts/weekly-share.png)
 
 ![Daily headlines around the election](charts/daily-around-election.png)
 
+### The ten-day lull
+
+The tone turned the day the story broke, but the volume did not. Between 29 Oct and 7 Nov the three outlets ran **8** Nvidia/Jensen headlines, 0.8 a day. From 8 to 11 Nov they ran **109**, about 27 a day: 5 on 8 Nov, then 42, 34 and 28.
+
+| | 29 Oct – 7 Nov (10 days) | 8 – 11 Nov (4 days) |
+|---|---:|---:|
+| NYT | 4, all on the spy story | 40 |
+| WSJ | 4, one on the spy story | 66 |
+| The Economist | 0 | 3 |
+
+During the lull NYT kept advancing the story with new reporting every few days: the first report (29 Oct), House Republican leaders asking Huang for a closed-door briefing (5 Nov), China's spy agency recruiting the woman (6 Nov), and U.S. export clearances to Chinese firms (7 Nov). WSJ matched the first report on 31 Oct and then ran nothing more on it for eight days. Nobody else followed.
+
+**Is the lull real, or a gap in the collection?** We checked two ways, using only the pages already collected:
+
+- **The archive pages for those days are complete.** WSJ's archive lists 137–175 headlines on each weekday of the lull and 30–65 on weekend days, the same pattern as the rest of the six months. NYT's sitemap lists 211–1,263 a day, peaking on election night. No day is missing or short.
+- **Scandal headlines that do not say "Nvidia" or "Jensen".** We searched every scanned headline from 22 Oct to 11 Nov for spy, espionage, Megaspeed, honeypot, chip executive, Huang, affair, Chinese intelligence and export-control terms. In the lull there is one: NYT's video "President Trump Was Briefed on a Chinese Spy Plot. He Took No Action." (29 Oct). After 8 Nov there are five, including WSJ's "Chinese Drones, Spies and Honey Pots" and NYT's "The A.I. Spy Thriller". So the keyword rule undercounts the scandal slightly, mostly after the lull, which makes the gap a little sharper.
+
+What this cannot rule out is WSJ live-blog cards or podcasts during the lull, which the WSJ archive leaves out and only site search could have found. It also covers only these three outlets; wire services and TV may have followed sooner.
+
+**Is the gap an anomaly?** It is striking, and it is the part of this record that most deserves a question. But the headlines point to an ordinary explanation:
+
+- **The story changed on 8 Nov.** Before then Huang was framed as the *target* of a spy, a national-security story resting on one outlet's sourcing. On 8 Nov he admitted the affair in a letter to staff and the board opened a probe. That made it a CEO-conduct and corporate-governance story about the world's most valuable company, which every business desk covers.
+- **Markets reopened on 9 Nov.** The letter came on a Sunday. Monday's share fall produced most of WSJ's 29 headlines that day, many of them live-blog cards.
+- **Election week.** The lull covers the run-up to the 3 Nov vote and the days after it, when political and national-security reporters were busiest with the election.
+
+What the headlines cannot settle is timing upstream of the newsrooms. NYT reported on 10 Nov that Trump had been told about the spying during his May trip to China, so officials knew for months before the 29 Oct leak. Why the leak came five days before the election, and why Huang's letter came five days after it, are fair questions this data raises but cannot answer. A benchmark, such as how quickly rivals followed other major single-outlet scoops, would show whether an 8-day wait for WSJ is unusual.
+
 ![Before and after by outlet](charts/by-outlet.png)
 
 ### Volume, tone by outlet, and the raters
 
-The surge is mostly volume. WSJ ran 65 headlines in the week of 9 Nov, many of them live-blog cards, podcasts and newsletters re-headlining the same events. Its next-biggest week, 28 headlines, was the week of quarterly earnings in late August.
+The surge is mostly volume. WSJ ran 65 headlines on 9–11 Nov, many of them live-blog cards, podcasts and newsletters re-headlining the same events. Its next-biggest week, 28 headlines, was the week of quarterly earnings in late August.
 
 ![Headlines per week by outlet](charts/volume-by-outlet.png)
 
@@ -73,13 +100,13 @@ Those pages listed 81,387 headlines in all:
 | Outlet | Pages read | Headlines scanned | Kept |
 |---|---:|---:|---:|
 | WSJ | 185 daily archive pages | 19,053 | 177 |
-| NYT | 185 daily sitemap pages | 60,385 | 80 |
+| NYT | 185 daily sitemap pages | 60,385 | 70 |
 | The Economist | 26 weekly editions | 1,949 | 11 |
-| **Total** | **396** | **81,387** | **268** |
+| **Total** | **396** | **81,387** | **258** |
 
 The NYT sitemap lists everything the paper publishes, including recipes, games and wire stories, which is why its count is so high. Site-search results added WSJ live-blog cards and podcasts that the archive leaves out; they mostly overlap with the archives and are not in the scanned count. The kept counts include them.
 
-A headline was kept if it contains "Nvidia" or "Jensen" (case-insensitive) and is dated in the window. Exact duplicates within an outlet were removed, leaving 268: WSJ 177, NYT 80, The Economist 11. No article text was collected or stored.
+A headline was kept if it contains "Nvidia" or "Jensen" (case-insensitive) and is dated in the window, and exact duplicates within an outlet were removed. That gave 268. Ten were then removed by hand and are listed with reasons in [`data/excluded.csv`](data/excluded.csv): four false matches (three different Jensens, and a Spanish headline where "envidiar" contains "nvidia") and six NYT en Español translations of English stories already counted. That leaves 258: WSJ 177, NYT 70, The Economist 11. No article text was collected or stored.
 
 **Scoring.** Three Claude Opus 5.5 instances scored every headline independently. Each saw only the headline and the outlet's one-line summary, not the other raters' scores. The rubric:
 
@@ -97,11 +124,11 @@ The charts use the median of the three scores. "Ethics-negative" means a median 
 
 | Raters | Same score | Quadratic weighted kappa |
 |---|---:|---:|
-| A and B | 92.9% | 0.95 |
-| A and C | 94.4% | 0.96 |
-| B and C | 94.0% | 0.95 |
+| A and B | 92.6% | 0.94 |
+| A and C | 94.6% | 0.96 |
+| B and C | 94.2% | 0.95 |
 
-All three gave the same score on 243 of 268 headlines and never differed by more than one point. The before-and-after gap holds for each rater alone: 5–7% ethics-negative before 29 Oct, 79–82% from 3 Nov.
+All three gave the same score on 234 of 258 headlines and never differed by more than one point. The before-and-after gap holds for each rater alone: 5–7% ethics-negative before 29 Oct, 79–83% from 3 Nov.
 
 ## Limitations
 
@@ -110,6 +137,7 @@ All three gave the same score on 243 of 268 headlines and never differed by more
 - **WSJ:** the WSJ daily archive leaves out live-coverage posts, videos and podcasts. Those are included only where site search found them, so they are undercounted before November. WSJ also re-headlines one event many times a day across live blogs, newsletters and podcasts, which inflates November counts.
 - **The Economist:** coverage is incomplete. Access was interrupted partway through, and some candidate articles were not checked, so its 11 headlines are a floor. Pieces whose headline does not contain "Nvidia" or "Jensen" are excluded by design, even when they are about the affair.
 - **Dates:** WSJ dates are US Eastern. Some dates are a day off from the publication time because of time-zone or update-time effects.
+- **Keyword rule:** headlines about the scandal that name neither Nvidia nor Jensen are not counted. A search of the scanned headlines found six such from 29 Oct to 11 Nov (one during the lull, five after 8 Nov).
 - **Claims:** the spy and affair claims are as reported by these outlets and were not independently verified.
 
 ## Files
@@ -119,6 +147,7 @@ All three gave the same score on 243 of 268 headlines and never differed by more
 | `data/headlines.csv`, `data/headlines.json` | One row per headline: `id`, `outlet`, `date`, `headline`, `print_headline` (Economist print title where it differs), `url`, `rater_a`, `rater_b`, `rater_c`, `median_score`, `about_huang` (1 if the headline names Huang or the CEO) |
 | `data/summary.json` | Every figure above, computed from the CSV |
 | `data/corpus.json` | Pages read and headlines scanned per outlet |
+| `data/excluded.csv` | The 10 matches removed by hand, with the reason for each |
 | `scripts/analyze.py` | Recomputes `summary.json`, the charts, the preview image and the headline list in this README from the CSV |
 | `charts/` | All charts, including `summary.png`, the one-image overview |
 | `site/index.html` | Interactive chart and full headline list |
@@ -139,7 +168,7 @@ Headlines remain the property of their publishers and are reproduced here, with 
 
 <!-- HEADLINES:START -->
 <details open>
-<summary><b>All 268 scored headlines</b> (newest first)</summary>
+<summary><b>All 258 scored headlines</b> (newest first)</summary>
 
 🟥 strongly negative · 🟧 mildly negative · ⬜ no ethics content · 🟩 defends or praises
 
@@ -166,7 +195,6 @@ Headlines remain the property of their publishers and are reproduced here, with 
 | 2026-11-11 | NYT | 🟥 -2 | -1 / -2 / -2 | [Nvidia’s Board Is Meeting to Discuss Jensen Huang’s Future](https://www.nytimes.com/2026/11/11/technology/nvidia-jensen-huang.html) |
 | 2026-11-11 | NYT | 🟧 -1 | -1 / -1 / -1 | [Nvidia Shares Plummet as Board Is Said to Consider C.E.O.’s Future](https://www.nytimes.com/2026/11/11/business/nvidia-stock-jensen-huang-ceo.html) |
 | 2026-11-11 | NYT | 🟧 -1 | -1 / -1 / -1 | [Nvidia Scandal Unveils a Fierce Spy War Raging Behind Trump and Xi’s Diplomacy](https://www.nytimes.com/2026/11/11/world/asia/china-us-nvidia.html) |
-| 2026-11-11 | NYT | 🟧 -1 | -1 / -1 / -1 | [La infidelidad de Jensen Huang pone a su esposa bajo el reflector](https://www.nytimes.com/es/2026/11/11/espanol/negocios/jensen-huang-esposa-nvidia.html) |
 | 2026-11-11 | NYT | 🟧 -1 | -1 / -1 / -1 | [Jensen Huang’s Affair Puts His Wife in the Spotlight](https://www.nytimes.com/2026/11/11/technology/jensen-huang-affair-lori-huang.html) |
 | 2026-11-11 | NYT | 🟥 -2 | -2 / -2 / -2 | [Jensen Huang Said to Have Had Relationship With Nvidia Executive Who Reports to Him](https://www.nytimes.com/2026/11/11/technology/jensen-huang-nvidia-affair.html) |
 | 2026-11-11 | NYT | 🟧 -1 | -1 / -1 / -1 | [Jensen Huang Betrayed the Leather Jacket Community](https://www.nytimes.com/2026/11/11/opinion/jensen-huang-leather-jacket.html) |
@@ -203,11 +231,9 @@ Headlines remain the property of their publishers and are reproduced here, with 
 | 2026-11-10 | NYT | 🟧 -1 | -1 / 0 / -1 | [Nvidia’s Game of Thrones](https://www.nytimes.com/2026/11/10/business/dealbook/nvidia-huang-succession.html) |
 | 2026-11-10 | NYT | 🟧 -1 | -1 / -1 / -1 | [Nvidia’s Board Has a History of Letting Jensen Huang Get His Way](https://www.nytimes.com/2026/11/10/technology/jensen-huang-nvidia-board.html) |
 | 2026-11-10 | NYT | 🟧 -1 | -1 / -1 / -2 | [Nvidia Hires Wachtell Lipton to Investigate C.E.O.’s Affair With Chinese Executive](https://www.nytimes.com/2026/11/10/business/nvidia-wachtell-lipton-jensen-huang.html) |
-| 2026-11-10 | NYT | 🟥 -2 | -2 / -2 / -1 | [La mujer en el centro del escándalo de espionaje de Nvidia](https://www.nytimes.com/es/2026/11/10/espanol/negocios/nvidia-jensen-alice-hang-china-espia.html) |
 | 2026-11-10 | NYT | 🟥 -2 | -2 / -2 / -2 | [How Times Reporters Uncovered the Nvidia C.E.O. Scandal](https://www.nytimes.com/video/podcasts/the-daily/100000011275758/how-timess-reporters-uncovered-the-nvidia-ceo-scandal.html) |
 | 2026-11-10 | NYT | 🟧 -1 | -1 / -1 / -1 | [Footage Shows Nvidia C.E.O. With Businesswoman Alice Huang](https://www.nytimes.com/video/world/100000011275138/nvidia-jensen-huang-china-espionage-trump.html) |
 | 2026-11-10 | NYT | 🟥 -2 | -2 / -2 / -2 | [Everything You Need to Know About the Jensen Huang Spy Story](https://www.nytimes.com/video/podcasts/100000011274204/everything-you-need-to-know-about-the-jensen-huang-spy-story.html) |
-| 2026-11-10 | NYT | 🟥 -2 | -2 / -2 / -2 | [Escándalo en Nvidia](https://www.nytimes.com/es/2026/11/10/espanol/mundo/escandalo-nvidia-ia.html) |
 | 2026-11-10 | NYT | 🟥 -2 | -2 / -2 / -2 | [Despite Denial, Trump Was Told on Trip to China About Spying on Nvidia Leader](https://www.nytimes.com/2026/11/10/us/politics/trump-china-trip-nvidia.html) |
 | 2026-11-10 | The Economist | 🟥 -2 | -2 / -2 / -2 | [When chips are down: Nvidia CEO’s risky relationship](https://www.economist.com/podcasts/2026/11/10/when-chips-are-down-nvidia-ceos-risky-relationship) |
 | 2026-11-09 | WSJ | 🟥 -2 | -2 / -2 / -2 | [What to Know About Nvidia’s Investigation After CEO’s Affair](https://www.wsj.com/tech/ai/what-to-know-about-nvidias-investigation-after-ceos-affair-98df3bba) |
@@ -242,16 +268,13 @@ Headlines remain the property of their publishers and are reproduced here, with 
 | 2026-11-09 | NYT | 🟥 -2 | -2 / -1 / -2 | [The Nvidia Affair](https://www.nytimes.com/2026/11/09/world/nvidia-affair-jensen-huang-russell-brand.html) |
 | 2026-11-09 | NYT | 🟧 -1 | -1 / -1 / -1 | [The Evening: Fallout From Nvidia Revelations Continues](https://www.nytimes.com/2026/11/09/briefing/nvidia-huang-hegseth.html) |
 | 2026-11-09 | NYT | 🟧 -1 | -2 / -1 / -1 | [Read the Memo Jensen Huang Sent to Nvidia Employees](https://www.nytimes.com/interactive/2026/11/09/business/nvidia-huang-email-memo.html) |
-| 2026-11-09 | NYT | 🟥 -2 | -2 / -2 / -2 | [Nvidia investiga la relación de Jensen Huang con una presunta espía china](https://www.nytimes.com/es/2026/11/09/espanol/negocios/nvidia-jensen-huang-espia-china.html) |
 | 2026-11-09 | NYT | 🟧 -1 | -1 / -1 / -1 | [Nvidia Stock Drops Even as Broader Market Rallies](https://www.nytimes.com/2026/11/09/business/nvidia-stock-price-jensen-huang-ceo.html) |
 | 2026-11-09 | NYT | 🟥 -2 | -2 / -2 / -2 | [Nvidia Inquiry Focuses on Relationship Between Jensen Huang and Suspected Chinese Spy](https://www.nytimes.com/video/us/100000011271460/nvidia-jensen-huang-china-investigation.html) |
 | 2026-11-09 | NYT | 🟩 +1 | +1 / +1 / +1 | [Nvidia Chief Told Trump He Did Not Know Chinese Woman Was Suspected Spy](https://www.nytimes.com/2026/11/09/us/politics/trump-jensen-huang-spy.html) |
 | 2026-11-09 | NYT | 🟥 -2 | -2 / -2 / -2 | [Nvidia C.E.O. Admits Relationship With Suspected Chinese Spy, and Stephen Miller Takes the Reins](https://www.nytimes.com/2026/11/09/podcasts/the-headlines/nvidia-ceo-suspected-chinese-spy-stephen-miller-trump-chief-of-staff.html) |
-| 2026-11-09 | NYT | 🟥 -2 | -2 / -2 / -2 | [La mayor agencia de espionaje china reclutó a una mujer cuyo objetivo era Jensen Huang](https://www.nytimes.com/es/2026/11/09/espanol/estados-unidos/jensen-huang-nvidia-china-mujer-espia.html) |
 | 2026-11-09 | NYT | 🟥 -2 | -2 / -2 / -2 | [Is Jensen Huang Too Powerful to Be Punished by Nvidia?](https://www.nytimes.com/2026/11/09/technology/jensen-huang-affair-nvidia.html) |
 | 2026-11-09 | NYT | 🟧 -1 | -2 / -1 / -1 | [How Indispensable Is Jensen Huang?](https://www.nytimes.com/2026/11/09/business/dealbook/nvidia-huang-spy.html) |
 | 2026-11-09 | NYT | 🟥 -2 | -2 / -2 / -2 | [Commerce Dept. Chip Inquiry Was Halted After Nvidia Intervention](https://www.nytimes.com/2026/11/09/business/economy/nvidia-megaspeed-investigation-huang.html) |
-| 2026-11-09 | NYT | ⬜ 0 | 0 / 0 / 0 | [Comedian Jordan Jensen’s Comedy Mines the Absurdity of the Awful](https://www.nytimes.com/2026/11/09/style/her-misery-loves-comedy.html) |
 | 2026-11-09 | NYT | 🟧 -1 | -1 / 0 / -1 | [China Rejects Espionage Claims Involving Nvidia C.E.O. Jensen Huang](https://www.nytimes.com/2026/11/09/business/jensen-huang-china-spying.html) |
 | 2026-11-09 | NYT | 🟥 -2 | -2 / -2 / -2 | [A.I. Fueled Nvidia CEO Jensen Huang’s Elite Status, but Scandal Followed](https://www.nytimes.com/2026/11/09/technology/jensen-huang-nvidia-ai-chips-scandal.html) |
 | 2026-11-09 | The Economist | 🟥 -2 | -2 / -1 / -2 | [Can Nvidia’s boss survive a Chinese-spy controversy?](https://www.economist.com/business/2026/11/09/can-nvidias-boss-survive-a-chinese-spy-controversy) |
@@ -267,7 +290,6 @@ Headlines remain the property of their publishers and are reproduced here, with 
 | 2026-11-03 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Apple Loses Stock-Market Crown to Nvidia After Earnings](https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-03-2026/card/apple-set-to-lose-stock-market-crown-after-earnings-mn8uUeHpqbO1VO5esMwm) |
 | 2026-10-31 | WSJ | 🟧 -1 | -1 / -1 / -1 | [The Sudden Death of an Nvidia AI Prodigy Leaves Behind Bitter Accusations](https://www.wsj.com/us-news/the-sudden-death-of-an-nvidia-ai-prodigy-leaves-behind-bitter-accusations-57ee23ec) |
 | 2026-10-31 | WSJ | 🟥 -2 | -2 / -2 / -2 | [Chinese Executive Close to Nvidia CEO Suspected of Giving China Information](https://www.wsj.com/tech/chinese-executive-close-to-nvidia-ceo-suspected-of-giving-china-information-798eb6a1) |
-| 2026-10-30 | NYT | 🟥 -2 | -2 / -2 / -2 | [El director ejecutivo de Nvidia podría ser objetivo de un complot de espionaje chino](https://www.nytimes.com/es/2026/10/30/espanol/estados-unidos/nvidia-china-espionaje-jensen-huang-trump.html) |
 | 2026-10-29 | NYT | 🟥 -2 | -2 / -2 / -2 | [Nvidia Chief Seen as Target of Chinese Spy Plot](https://www.nytimes.com/2026/10/29/us/politics/nvidia-china-jensen-huang-trump.html) |
 | 2026-10-27 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia to Invest $3 Billion in Meta’s Equity Offering as They Expand AI Partnership](https://www.wsj.com/tech/ai/nvidia-to-invest-3-billion-in-metas-equity-offering-as-they-expand-ai-partnership-e8d3850a) |
 | 2026-10-27 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia Invests in Another of Its Customers](https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-27-2026/card/nvidia-invests-in-another-of-its-customers-iNcvFy3Fxm5fHyX9T7vF) |
@@ -360,7 +382,6 @@ Headlines remain the property of their publishers and are reproduced here, with 
 | 2026-08-17 | WSJ | ⬜ 0 | 0 / 0 / 0 | [OpenAI Locks In Lease for Huge Data Center in Ohio With Backing From Nvidia](https://www.wsj.com/articles/openai-locks-in-lease-for-huge-data-center-in-ohio-with-backing-from-nvidia-7474bb9c) |
 | 2026-08-17 | NYT | ⬜ 0 | 0 / 0 / 0 | [Nvidia to Back Ohio Data Center With as Much as $105 Billion](https://www.nytimes.com/2026/08/17/technology/nvidia-ohio-data-center-openai.html) |
 | 2026-08-16 | WSJ | ⬜ 0 | 0 / 0 / 0 | [The Bank of Nvidia](https://www.wsj.com/tech/ai/the-bank-of-nvidia-407f5a7a) |
-| 2026-08-15 | NYT | ⬜ 0 | 0 / 0 / 0 | [Es natural envidiar a tus amigos](https://www.nytimes.com/es/2026/08/15/espanol/estilos-de-vida/envidia-redes-sociales-que-hacer.html) |
 | 2026-08-14 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia Downsizes Plans for $250 Billion Guarantee of OpenAI Data Center](https://www.wsj.com/tech/nvidia-downsizes-plans-for-250-billion-guarantee-of-openai-data-center-b56c38d3) |
 | 2026-08-11 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Why Wall Street and Nvidia Are Building an Exotic Money Pipeline for the AI Boom](https://www.wsj.com/tech/ai/why-wall-street-and-nvidia-are-building-an-exotic-money-pipeline-for-the-ai-boom-346ba482) |
 | 2026-08-11 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia Releases New Open Model](https://www.wsj.com/cio-journal/nvidia-releases-new-open-model-ee66e6a3) |
@@ -378,11 +399,9 @@ Headlines remain the property of their publishers and are reproduced here, with 
 | 2026-07-26 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia to Invest $1 Billion in Naver’s AI Project](https://www.wsj.com/tech/ai/nvidia-to-invest-1-billion-in-navers-ai-project-167e25de) |
 | 2026-07-26 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia in Talks With OpenAI to Guarantee $250 Billion Financing for Data Center](https://www.wsj.com/tech/ai/nvidia-in-talks-with-openai-to-guarantee-250-billion-financing-for-data-center-3dd6eae3) |
 | 2026-07-22 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia Supplier Wistron Opens $700 Million Texas Site Producing AI ‘Superchips’](https://www.wsj.com/tech/nvidia-supplier-wistron-opens-700-million-texas-site-producing-ai-superchips-cc8cfb49) |
-| 2026-07-20 | NYT | ⬜ 0 | 0 / 0 / 0 | [The Design of the Jensen Interceptor Is Still Beloved 50 Years Later](https://www.nytimes.com/2026/07/20/automobiles/collectibles/jensen-interceptor-design.html) |
 | 2026-07-17 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia, Challenged by Apple, Narrowly Retains Wall Street’s Crown](https://www.wsj.com/tech/apple-overthrows-nvidia-to-reclaim-wall-streets-crown-ddc74a38) |
 | 2026-07-16 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Japan to Buy Nvidia Chips to Power Its AI Push](https://www.wsj.com/tech/ai/nvidia-noetra-to-build-ai-factory-to-power-japans-ai-ambitions-95e74210) |
 | 2026-07-07 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia-Backed Startup Nscale Locks in $900 Million for Data-Center Buildout](https://www.wsj.com/tech/ai/nvidia-backed-startup-nscale-locks-in-900-million-for-data-center-buildout-fd9820b3) |
-| 2026-07-07 | NYT | ⬜ 0 | 0 / 0 / 0 | [Buy Carter Jensen, sell Travis Bazzana, hold Trea Turner in fantasy baseball](https://www.nytimes.com/athletic/7425265/2026/07/07/fantasy-baseball-buy-sell-hold-jensen-bazzana-turner) |
 | 2026-06-18 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Google Is Using Nvidia’s Playbook to Build a Rival AI Chip Business](https://www.wsj.com/tech/ai/google-is-using-nvidias-playbook-to-build-a-rival-ai-chip-business-1eac86f9) |
 | 2026-06-16 | NYT | ⬜ 0 | 0 / 0 / 0 | [It’s Not Just Nvidia. The A.I. Boom Has Ignited Asia’s Chip Companies.](https://www.nytimes.com/2026/06/16/technology/taiwan-south-korea-ai-chips.html) |
 | 2026-06-11 | WSJ | ⬜ 0 | 0 / 0 / 0 | [Nvidia, Amazon Back Neura Robotics’ $1.4 Billion Fundraise](https://www.wsj.com/tech/ai/nvidia-amazon-back-neura-robotics-1-4-billion-fundraise-ff630662) |

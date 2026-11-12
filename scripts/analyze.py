@@ -41,13 +41,13 @@ OUTLETS = ["WSJ", "NYT", "The Economist"]
 # (validated for colour-vision deficiency in both modes) so they never read as tone.
 THEMES = {
     "light": {
-        "bg": "#ffffff", "ink": "#1d1f22", "muted": "#62666c", "grid": "#e8e8e4",
+        "bg": "#ffffff", "ink": "#1d1f22", "muted": "#62666c", "grid": "#e8e8e4", "lull": "#f1efe6",
         "tone": ["#b3261e", "#e9965a", "#c4c6c9", "#2b7a78"],
         "outlet": {"WSJ": "#2a78d6", "NYT": "#e87ba4", "The Economist": "#6250d6"},
         "rater": ["#3d4451", "#7d838c", "#b9bdc3"],
     },
     "dark": {
-        "bg": "#0d1117", "ink": "#e8e9ea", "muted": "#9a9fa6", "grid": "#262a30",
+        "bg": "#0d1117", "ink": "#e8e9ea", "muted": "#9a9fa6", "grid": "#262a30", "lull": "#2a2619",
         "tone": ["#e0594f", "#d98a52", "#5b5f66", "#4fb3af"],
         "outlet": {"WSJ": "#3987e5", "NYT": "#d55181", "The Economist": "#9085e9"},
         "rater": ["#e8e9ea", "#a9aeb5", "#6b7078"],
@@ -195,6 +195,20 @@ def events(ax, to_x, base=1.03, step=0.09, fontsize=9.5):
                     textcoords="offset points", fontsize=fontsize, fontweight="bold", color=T["ink"])
 
 
+def lull_count(rows):
+    g = [r for r in rows if STORY_BREAK <= r["date"] < ADMISSION]
+    return len(g), sum(r["median_score"] < 0 for r in g)
+
+
+def lull(ax, x0, x1, rows, tx, ty, ha="right", fontsize=9.5):
+    """Shade the gap between the story breaking (29 Oct) and Huang's letter (8 Nov), and say how quiet it was."""
+    n, neg = lull_count(rows)
+    ax.axvspan(x0, x1, color=T["lull"], zorder=0, lw=0)
+    ax.annotate(f"The lull, 29 Oct–7 Nov: {n} Nvidia/Jensen\nheadlines in 10 days,\n{neg} of them ethics-negative",
+                (tx, ty), xycoords=("data", "axes fraction"), ha=ha, va="top", fontsize=fontsize,
+                color=T["ink"], linespacing=1.35)
+
+
 def legend(ax, labels, colours, ncol=4, kind="box"):
     if kind == "box":
         handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in colours]
@@ -260,6 +274,7 @@ def weekly_chart(rows, path):
     grid_y(ax)
     week_ticks(ax)
     events(ax, week_x, base=1.08)
+    lull(ax, week_x(STORY_BREAK), week_x(ADMISSION), rows, week_x(STORY_BREAK) - 0.3, 0.96)
     title(ax, "Share of Nvidia/Jensen headlines by ethics tone, per week (count above bar)", 66)
     legend(ax, CLASS_NAMES, T["tone"])
     finish(fig, path)
@@ -282,6 +297,7 @@ def daily_chart(rows, path):
     ax.set_xticks(range(0, 17, 2), [days[i].strftime("%-d %b") for i in range(0, 17, 2)])
     ax.set_xlim(-0.7, 16.7)
     events(ax, lambda d: (d - start).days)
+    lull(ax, (STORY_BREAK - start).days, (ADMISSION - start).days, rows, (STORY_BREAK - start).days + 0.3, 0.8, ha="left")
     ax.set_ylabel("Headlines per day")
     title(ax, "The 17 days around the election", 60)
     legend(ax, CLASS_NAMES, T["tone"])
@@ -333,6 +349,7 @@ def volume_chart(rows, path):
     grid_y(ax)
     week_ticks(ax)
     events(ax, week_x)
+    lull(ax, week_x(STORY_BREAK), week_x(ADMISSION), rows, week_x(STORY_BREAK) - 0.3, 0.55)
     ax.set_ylabel("Headlines per week")
     title(ax, "How many Nvidia/Jensen headlines each outlet ran, per week", 60)
     totals = {o: sum(r["outlet"] == o for r in rows) for o in OUTLETS}
@@ -454,9 +471,9 @@ def content_kind(url):
 def poster(rows, summary, path):
     import matplotlib.gridspec as gridspec
     corpus = json.loads((ROOT / "data" / "corpus.json").read_text(encoding="utf-8"))
-    fig = plt.figure(figsize=(9, 17), dpi=150)
-    gs = gridspec.GridSpec(5, 1, figure=fig, height_ratios=[1.45, 1.15, 1.25, 1.3, 1.15],
-                           hspace=0.85, left=0.1, right=0.9, top=0.975, bottom=0.065)
+    fig = plt.figure(figsize=(9, 22), dpi=150)
+    gs = gridspec.GridSpec(6, 1, figure=fig, height_ratios=[2.1, 1.45, 1.15, 1.25, 1.3, 1.15],
+                           hspace=1.05, left=0.1, right=0.9, top=0.975, bottom=0.065)
 
     # 1. header
     ax = fig.add_subplot(gs[0]); ax.axis("off")
@@ -464,14 +481,14 @@ def poster(rows, summary, path):
     after = summary["periods"]["election_and_after_2026-11-03_to_11-11"]["ethics_negative_share"]
     ax.text(0, 1.0, "NVIDIA HEADLINES · WSJ · NYT · THE ECONOMIST · MAY–NOV 2026", transform=ax.transAxes,
             fontsize=10.5, fontweight="bold", color=T["muted"], va="top")
-    ax.text(0, 0.87, "How ethics coverage of\nJensen Huang turned", transform=ax.transAxes,
+    ax.text(0, 0.92, "How ethics coverage of\nJensen Huang turned", transform=ax.transAxes,
             fontsize=24, fontweight="bold", color=T["ink"], va="top", linespacing=1.05)
-    ax.text(0, 0.17, f"{before:.0%}", transform=ax.transAxes, fontsize=44, fontweight="bold", color=T["muted"], va="bottom")
-    ax.text(0.2, 0.21, "ethics-negative\nbefore 29 Oct", transform=ax.transAxes, fontsize=11, color=T["muted"], va="bottom")
-    ax.text(0.47, 0.17, f"{after:.0%}", transform=ax.transAxes, fontsize=44, fontweight="bold", color=T["tone"][0], va="bottom")
-    ax.text(0.71, 0.21, "from the 3 Nov\nmidterms onward", transform=ax.transAxes, fontsize=11, color=T["ink"], va="bottom")
-    ax.text(0, 0.06, "The turn began 29 Oct, five days before the vote, when the spy-plot story broke.\n"
-            "The surge came 8–9 Nov, after Huang admitted an affair and the board opened a probe.",
+    ax.text(0, 0.33, f"{before:.0%}", transform=ax.transAxes, fontsize=44, fontweight="bold", color=T["muted"], va="bottom")
+    ax.text(0.2, 0.37, "ethics-negative\nbefore 29 Oct", transform=ax.transAxes, fontsize=11, color=T["muted"], va="bottom")
+    ax.text(0.47, 0.33, f"{after:.0%}", transform=ax.transAxes, fontsize=44, fontweight="bold", color=T["tone"][0], va="bottom")
+    ax.text(0.71, 0.37, "from the 3 Nov\nmidterms onward", transform=ax.transAxes, fontsize=11, color=T["ink"], va="bottom")
+    ax.text(0, 0.24, "The tone turned on 29 Oct, five days before the vote, when the spy-plot story broke.\n"
+            "Then came a ten-day lull. The surge began after Huang's letter to staff on 8 Nov.",
             transform=ax.transAxes, fontsize=10, color=T["muted"], va="top", linespacing=1.4)
 
     def panel_title(ax, text, sub, y):
@@ -481,8 +498,33 @@ def poster(rows, summary, path):
         ax.annotate(text, (0, y), xycoords="axes fraction", xytext=(0, 13.5 * n + 6), textcoords="offset points",
                     fontsize=12.5, fontweight="bold", color=T["ink"], va="bottom", ha="left")
 
-    # 2. weekly ethics-negative share
+    # 1. daily, 26 Oct–11 Nov: the core of the story
     ax = fig.add_subplot(gs[1])
+    start = date(2026, 10, 26)
+    days = [start + timedelta(days=i) for i in range(17)]
+    top = 0
+    for i, d in enumerate(days):
+        bottom = 0
+        for colour, c in zip(T["tone"], class_counts([r for r in rows if r["date"] == d])):
+            if c:
+                ax.bar(i, c, bottom=bottom, width=0.72, color=colour, edgecolor=T["bg"], linewidth=0.8, zorder=2)
+            bottom += c
+        top = max(top, bottom)
+    ax.set_ylim(0, top * 1.1)
+    grid_y(ax)
+    ax.set_xticks(range(0, 17, 2), [days[i].strftime("%-d %b") for i in range(0, 17, 2)])
+    ax.set_xlim(-0.7, 16.7)
+    day_x = lambda d: (d - start).days
+    events(ax, day_x, base=1.03, step=0.10, fontsize=9)
+    lull(ax, day_x(STORY_BREAK), day_x(ADMISSION), rows, day_x(STORY_BREAK) + 0.3, 0.88, ha="left", fontsize=9)
+    ax.legend([plt.Rectangle((0, 0), 1, 1, color=c) for c in T["tone"]], CLASS_NAMES, ncol=4, frameon=False,
+              loc="upper left", bbox_to_anchor=(-0.01, -0.1), fontsize=9, handlelength=1, handleheight=1)
+    panel_title(ax, "1  Nvidia/Jensen headlines per day, 26 Oct–11 Nov",
+                "Coloured by ethics tone. Shaded: the ten-day lull between the spy-plot story breaking\n"
+                "and Huang's letter to staff.", 1.30)
+
+    # 2. weekly ethics-negative share
+    ax = fig.add_subplot(gs[2])
     for i, w in enumerate(weeks()):
         g = [r for r in rows if in_week(r, w)]
         if g:
@@ -493,12 +535,13 @@ def poster(rows, summary, path):
     ax.set_yticks([0, 0.5, 1], ["0%", "50%", "100%"])
     grid_y(ax); week_ticks(ax)
     events(ax, week_x, base=1.03, step=0.11, fontsize=9)
-    panel_title(ax, "1  Ethics tone of Nvidia/Jensen headlines, per week",
+    ax.axvspan(week_x(STORY_BREAK), week_x(ADMISSION), color=T["lull"], zorder=0, lw=0)
+    panel_title(ax, "2  Ethics tone of Nvidia/Jensen headlines, per week",
                 "Each bar: the share of that week's headlines mentioning Nvidia or Jensen that were scored\n"
-                "ethics-negative. WSJ, NYT and The Economist combined. Not their coverage of anything else.", 1.30)
+                "ethics-negative. WSJ, NYT and The Economist combined. Not their coverage of anything else.", 1.40)
 
     # 3. volume by outlet
-    ax = fig.add_subplot(gs[2])
+    ax = fig.add_subplot(gs[3])
     top = 0
     for i, w in enumerate(weeks()):
         bottom = 0
@@ -511,17 +554,19 @@ def poster(rows, summary, path):
     ax.set_ylim(0, top * 1.1)
     grid_y(ax); week_ticks(ax)
     events(ax, week_x, base=1.03, step=0.10, fontsize=9)
-    ax.annotate("110 headlines in the week of 9 Nov.\nBusiest earlier week: 31 (earnings).", (19.2, top * 0.72),
+    ax.axvspan(week_x(STORY_BREAK), week_x(ADMISSION), color=T["lull"], zorder=0, lw=0)
+    wk = [sum(1 for r in rows if in_week(r, w)) for w in weeks()]
+    ax.annotate(f"{wk[-1]} headlines in the week of 9 Nov.\nBusiest earlier week: {max(wk[:-2])} (earnings).", (19.2, top * 0.80),
                 fontsize=9.5, color=T["muted"], ha="right", va="center")
     totals = {o: sum(r["outlet"] == o for r in rows) for o in OUTLETS}
     ax.legend([plt.Rectangle((0, 0), 1, 1, color=T["outlet"][o]) for o in OUTLETS],
               [f"{o} ({totals[o]})" for o in OUTLETS], ncol=3, frameon=False, loc="upper left",
               bbox_to_anchor=(0, 0.98), fontsize=9.5, handlelength=1, handleheight=1)
-    panel_title(ax, "2  How many Nvidia/Jensen headlines each outlet ran, per week",
-                "Count of headlines that mention Nvidia or Jensen.", 1.30)
+    panel_title(ax, "3  How many Nvidia/Jensen headlines each outlet ran, per week",
+                "Count of headlines that mention Nvidia or Jensen.", 1.40)
 
     # 4. monthly tone by outlet
-    ax = fig.add_subplot(gs[3])
+    ax = fig.add_subplot(gs[4])
     months = [(2026, m) for m in range(5, 12)]
     ax.axhline(0, color=T["grid"], lw=1.2)
     for k, o in enumerate(OUTLETS):
@@ -545,13 +590,16 @@ def poster(rows, summary, path):
     ax.set_yticks([-2, -1, 0], ["−2", "−1", "0"])
     grid_y(ax)
     ax.set_ylabel("Mean score (−2 to +2)")
-    panel_title(ax, "3  Ethics tone of Nvidia/Jensen headlines, by outlet, per month",
+    panel_title(ax, "4  Ethics tone of Nvidia/Jensen headlines, by outlet, per month",
                 "Average score from −2 (strongly negative) to +2. Nov = 1–11 Nov.\n"
                 "Dot size = headlines that month · dashed = a month with none from that outlet.", 1.04)
 
     # 5. normal week vs 9–11 Nov, by format
-    ax = fig.add_subplot(gs[4])
+    ax = fig.add_subplot(gs[5])
     kinds = ["Articles", "Live-blog cards", "Podcasts & video", "Newsletters"]
+    nyt_pre_art = sum(1 for r in rows if r["outlet"] == "NYT" and r["date"] < STORY_BREAK and content_kind(r["url"]) == "Articles")
+    nyt_surge_art = sum(1 for r in rows if r["outlet"] == "NYT" and date(2026, 11, 9) <= r["date"] <= date(2026, 11, 11)
+                        and content_kind(r["url"]) == "Articles")
     kind_col = [T["ink"], T["muted"], T["tone"][2], T["grid"]]
     pre_weeks = 24
     labels, ypos = [], []
@@ -578,9 +626,9 @@ def poster(rows, summary, path):
     ax.set_xlim(0, 72)
     ax.legend([plt.Rectangle((0, 0), 1, 1, color=c) for c in kind_col], kinds, ncol=2, frameon=False,
               loc="upper right", bbox_to_anchor=(1.0, 1.0), fontsize=9, handlelength=1, handleheight=1)
-    panel_title(ax, "4  Nvidia/Jensen headlines: an average week vs 9–11 Nov",
-                "In those 3 days NYT ran 30 articles about Nvidia or Jensen, more than in the\n"
-                "5½ months before (25). Bars are split by format.", 1.04)
+    panel_title(ax, "5  Nvidia/Jensen headlines: an average week vs 9–11 Nov",
+                f"In those 3 days NYT ran {nyt_surge_art} articles about Nvidia or Jensen; in the 5½ months\n"
+                f"before 29 Oct it ran {nyt_pre_art}. Bars are split by format.", 1.04)
 
     fig.text(0.1, 0.012,
              f"Source: {corpus['headlines_listed_total']:,} WSJ, NYT and Economist headlines scanned, 11 May–11 Nov 2026; "

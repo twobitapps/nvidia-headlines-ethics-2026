@@ -29,11 +29,9 @@ id,outlet,date,headline,print_headline,url,rater_a,rater_b,rater_c,median_score,
 28,WSJ,2026-06-11,"Nvidia, Amazon Back Neura Robotics’ $1.4 Billion Fundraise",,https://www.wsj.com/tech/ai/nvidia-amazon-back-neura-robotics-1-4-billion-fundraise-ff630662,0,0,0,0,0
 29,NYT,2026-06-16,It’s Not Just Nvidia. The A.I. Boom Has Ignited Asia’s Chip Companies.,,https://www.nytimes.com/2026/06/16/technology/taiwan-south-korea-ai-chips.html,0,0,0,0,0
 30,WSJ,2026-06-18,Google Is Using Nvidia’s Playbook to Build a Rival AI Chip Business,,https://www.wsj.com/tech/ai/google-is-using-nvidias-playbook-to-build-a-rival-ai-chip-business-1eac86f9,0,0,0,0,0
-31,NYT,2026-07-07,"Buy Carter Jensen, sell Travis Bazzana, hold Trea Turner in fantasy baseball",,https://www.nytimes.com/athletic/7425265/2026/07/07/fantasy-baseball-buy-sell-hold-jensen-bazzana-turner,0,0,0,0,1
 32,WSJ,2026-07-07,Nvidia-Backed Startup Nscale Locks in $900 Million for Data-Center Buildout,,https://www.wsj.com/tech/ai/nvidia-backed-startup-nscale-locks-in-900-million-for-data-center-buildout-fd9820b3,0,0,0,0,0
 33,WSJ,2026-07-16,Japan to Buy Nvidia Chips to Power Its AI Push,,https://www.wsj.com/tech/ai/nvidia-noetra-to-build-ai-factory-to-power-japans-ai-ambitions-95e74210,0,0,0,0,0
 34,WSJ,2026-07-17,"Nvidia, Challenged by Apple, Narrowly Retains Wall Street’s Crown",,https://www.wsj.com/tech/apple-overthrows-nvidia-to-reclaim-wall-streets-crown-ddc74a38,0,0,0,0,0
-35,NYT,2026-07-20,The Design of the Jensen Interceptor Is Still Beloved 50 Years Later,,https://www.nytimes.com/2026/07/20/automobiles/collectibles/jensen-interceptor-design.html,0,0,0,0,1
 36,WSJ,2026-07-22,Nvidia Supplier Wistron Opens $700 Million Texas Site Producing AI ‘Superchips’,,https://www.wsj.com/tech/nvidia-supplier-wistron-opens-700-million-texas-site-producing-ai-superchips-cc8cfb49,0,0,0,0,0
 37,WSJ,2026-07-26,Nvidia in Talks With OpenAI to Guarantee $250 Billion Financing for Data Center,,https://www.wsj.com/tech/ai/nvidia-in-talks-with-openai-to-guarantee-250-billion-financing-for-data-center-3dd6eae3,0,0,0,0,0
 38,WSJ,2026-07-26,Nvidia to Invest $1 Billion in Naver’s AI Project,,https://www.wsj.com/tech/ai/nvidia-to-invest-1-billion-in-navers-ai-project-167e25de,0,0,0,0,0
@@ -51,7 +49,6 @@ id,outlet,date,headline,print_headline,url,rater_a,rater_b,rater_c,median_score,
 50,WSJ,2026-08-11,Nvidia Releases New Open Model,,https://www.wsj.com/cio-journal/nvidia-releases-new-open-model-ee66e6a3,0,0,0,0,0
 51,WSJ,2026-08-11,Why Wall Street and Nvidia Are Building an Exotic Money Pipeline for the AI Boom,,https://www.wsj.com/tech/ai/why-wall-street-and-nvidia-are-building-an-exotic-money-pipeline-for-the-ai-boom-346ba482,0,0,0,0,0
 52,WSJ,2026-08-14,Nvidia Downsizes Plans for $250 Billion Guarantee of OpenAI Data Center,,https://www.wsj.com/tech/nvidia-downsizes-plans-for-250-billion-guarantee-of-openai-data-center-b56c38d3,0,0,0,0,0
-53,NYT,2026-08-15,Es natural envidiar a tus amigos,,https://www.nytimes.com/es/2026/08/15/espanol/estilos-de-vida/envidia-redes-sociales-que-hacer.html,0,0,0,0,0
 54,WSJ,2026-08-16,The Bank of Nvidia,,https://www.wsj.com/tech/ai/the-bank-of-nvidia-407f5a7a,0,0,0,0,0
 55,NYT,2026-08-17,Nvidia to Back Ohio Data Center With as Much as $105 Billion,,https://www.nytimes.com/2026/08/17/technology/nvidia-ohio-data-center-openai.html,0,0,0,0,0
 56,WSJ,2026-08-17,OpenAI Locks In Lease for Huge Data Center in Ohio With Backing From Nvidia,,https://www.wsj.com/articles/openai-locks-in-lease-for-huge-data-center-in-ohio-with-backing-from-nvidia-7474bb9c,0,0,0,0,0
@@ -144,7 +141,6 @@ id,outlet,date,headline,print_headline,url,rater_a,rater_b,rater_c,median_score,
 143,WSJ,2026-10-27,Nvidia Invests in Another of Its Customers,,https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-27-2026/card/nvidia-invests-in-another-of-its-customers-iNcvFy3Fxm5fHyX9T7vF,0,0,0,0,0
 144,WSJ,2026-10-27,Nvidia to Invest $3 Billion in Meta’s Equity Offering as They Expand AI Partnership,,https://www.wsj.com/tech/ai/nvidia-to-invest-3-billion-in-metas-equity-offering-as-they-expand-ai-partnership-e8d3850a,0,0,0,0,0
 145,NYT,2026-10-29,Nvidia Chief Seen as Target of Chinese Spy Plot,,https://www.nytimes.com/2026/10/29/us/politics/nvidia-china-jensen-huang-trump.html,-2,-2,-2,-2,1
-146,NYT,2026-10-30,El director ejecutivo de Nvidia podría ser objetivo de un complot de espionaje chino,,https://www.nytimes.com/es/2026/10/30/espanol/estados-unidos/nvidia-china-espionaje-jensen-huang-trump.html,-2,-2,-2,-2,0
 147,WSJ,2026-10-31,Chinese Executive Close to Nvidia CEO Suspected of Giving China Information,,https://www.wsj.com/tech/chinese-executive-close-to-nvidia-ceo-suspected-of-giving-china-information-798eb6a1,-2,-2,-2,-2,1
 148,WSJ,2026-10-31,The Sudden Death of an Nvidia AI Prodigy Leaves Behind Bitter Accusations,,https://www.wsj.com/us-news/the-sudden-death-of-an-nvidia-ai-prodigy-leaves-behind-bitter-accusations-57ee23ec,-1,-1,-1,-1,0
 149,WSJ,2026-11-03,Apple Loses Stock-Market Crown to Nvidia After Earnings,,https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-03-2026/card/apple-set-to-lose-stock-market-crown-after-earnings-mn8uUeHpqbO1VO5esMwm,0,0,0,0,0
@@ -160,16 +156,13 @@ id,outlet,date,headline,print_headline,url,rater_a,rater_b,rater_c,median_score,
 159,The Economist,2026-11-09,Can Nvidia’s boss survive a Chinese-spy controversy?,,https://www.economist.com/business/2026/11/09/can-nvidias-boss-survive-a-chinese-spy-controversy,-2,-1,-2,-2,1
 160,NYT,2026-11-09,"A.I. Fueled Nvidia CEO Jensen Huang’s Elite Status, but Scandal Followed",,https://www.nytimes.com/2026/11/09/technology/jensen-huang-nvidia-ai-chips-scandal.html,-2,-2,-2,-2,1
 161,NYT,2026-11-09,China Rejects Espionage Claims Involving Nvidia C.E.O. Jensen Huang,,https://www.nytimes.com/2026/11/09/business/jensen-huang-china-spying.html,-1,0,-1,-1,1
-162,NYT,2026-11-09,Comedian Jordan Jensen’s Comedy Mines the Absurdity of the Awful,,https://www.nytimes.com/2026/11/09/style/her-misery-loves-comedy.html,0,0,0,0,1
 163,NYT,2026-11-09,Commerce Dept. Chip Inquiry Was Halted After Nvidia Intervention,,https://www.nytimes.com/2026/11/09/business/economy/nvidia-megaspeed-investigation-huang.html,-2,-2,-2,-2,0
 164,NYT,2026-11-09,How Indispensable Is Jensen Huang?,,https://www.nytimes.com/2026/11/09/business/dealbook/nvidia-huang-spy.html,-2,-1,-1,-1,1
 165,NYT,2026-11-09,Is Jensen Huang Too Powerful to Be Punished by Nvidia?,,https://www.nytimes.com/2026/11/09/technology/jensen-huang-affair-nvidia.html,-2,-2,-2,-2,1
-166,NYT,2026-11-09,La mayor agencia de espionaje china reclutó a una mujer cuyo objetivo era Jensen Huang,,https://www.nytimes.com/es/2026/11/09/espanol/estados-unidos/jensen-huang-nvidia-china-mujer-espia.html,-2,-2,-2,-2,1
 167,NYT,2026-11-09,"Nvidia C.E.O. Admits Relationship With Suspected Chinese Spy, and Stephen Miller Takes the Reins",,https://www.nytimes.com/2026/11/09/podcasts/the-headlines/nvidia-ceo-suspected-chinese-spy-stephen-miller-trump-chief-of-staff.html,-2,-2,-2,-2,1
 168,NYT,2026-11-09,Nvidia Chief Told Trump He Did Not Know Chinese Woman Was Suspected Spy,,https://www.nytimes.com/2026/11/09/us/politics/trump-jensen-huang-spy.html,1,1,1,1,1
 169,NYT,2026-11-09,Nvidia Inquiry Focuses on Relationship Between Jensen Huang and Suspected Chinese Spy,,https://www.nytimes.com/video/us/100000011271460/nvidia-jensen-huang-china-investigation.html,-2,-2,-2,-2,1
 170,NYT,2026-11-09,Nvidia Stock Drops Even as Broader Market Rallies,,https://www.nytimes.com/2026/11/09/business/nvidia-stock-price-jensen-huang-ceo.html,-1,-1,-1,-1,0
-171,NYT,2026-11-09,Nvidia investiga la relación de Jensen Huang con una presunta espía china,,https://www.nytimes.com/es/2026/11/09/espanol/negocios/nvidia-jensen-huang-espia-china.html,-2,-2,-2,-2,1
 172,NYT,2026-11-09,Read the Memo Jensen Huang Sent to Nvidia Employees,,https://www.nytimes.com/interactive/2026/11/09/business/nvidia-huang-email-memo.html,-2,-1,-1,-1,1
 173,NYT,2026-11-09,The Evening: Fallout From Nvidia Revelations Continues,,https://www.nytimes.com/2026/11/09/briefing/nvidia-huang-hegseth.html,-1,-1,-1,-1,0
 174,NYT,2026-11-09,The Nvidia Affair,,https://www.nytimes.com/2026/11/09/world/nvidia-affair-jensen-huang-russell-brand.html,-2,-1,-2,-2,0
@@ -204,11 +197,9 @@ id,outlet,date,headline,print_headline,url,rater_a,rater_b,rater_c,median_score,
 203,WSJ,2026-11-09,What to Know About Nvidia’s Investigation After CEO’s Affair,,https://www.wsj.com/tech/ai/what-to-know-about-nvidias-investigation-after-ceos-affair-98df3bba,-2,-2,-2,-2,1
 204,The Economist,2026-11-10,When chips are down: Nvidia CEO’s risky relationship,,https://www.economist.com/podcasts/2026/11/10/when-chips-are-down-nvidia-ceos-risky-relationship,-2,-2,-2,-2,1
 205,NYT,2026-11-10,"Despite Denial, Trump Was Told on Trip to China About Spying on Nvidia Leader",,https://www.nytimes.com/2026/11/10/us/politics/trump-china-trip-nvidia.html,-2,-2,-2,-2,0
-206,NYT,2026-11-10,Escándalo en Nvidia,,https://www.nytimes.com/es/2026/11/10/espanol/mundo/escandalo-nvidia-ia.html,-2,-2,-2,-2,0
 207,NYT,2026-11-10,Everything You Need to Know About the Jensen Huang Spy Story,,https://www.nytimes.com/video/podcasts/100000011274204/everything-you-need-to-know-about-the-jensen-huang-spy-story.html,-2,-2,-2,-2,1
 208,NYT,2026-11-10,Footage Shows Nvidia C.E.O. With Businesswoman Alice Huang,,https://www.nytimes.com/video/world/100000011275138/nvidia-jensen-huang-china-espionage-trump.html,-1,-1,-1,-1,1
 209,NYT,2026-11-10,How Times Reporters Uncovered the Nvidia C.E.O. Scandal,,https://www.nytimes.com/video/podcasts/the-daily/100000011275758/how-timess-reporters-uncovered-the-nvidia-ceo-scandal.html,-2,-2,-2,-2,1
-210,NYT,2026-11-10,La mujer en el centro del escándalo de espionaje de Nvidia,,https://www.nytimes.com/es/2026/11/10/espanol/negocios/nvidia-jensen-alice-hang-china-espia.html,-2,-2,-1,-2,0
 211,NYT,2026-11-10,Nvidia Hires Wachtell Lipton to Investigate C.E.O.’s Affair With Chinese Executive,,https://www.nytimes.com/2026/11/10/business/nvidia-wachtell-lipton-jensen-huang.html,-1,-1,-2,-1,1
 212,NYT,2026-11-10,Nvidia’s Board Has a History of Letting Jensen Huang Get His Way,,https://www.nytimes.com/2026/11/10/technology/jensen-huang-nvidia-board.html,-1,-1,-1,-1,1
 213,NYT,2026-11-10,Nvidia’s Game of Thrones,,https://www.nytimes.com/2026/11/10/business/dealbook/nvidia-huang-succession.html,-1,0,-1,-1,0
@@ -245,7 +236,6 @@ id,outlet,date,headline,print_headline,url,rater_a,rater_b,rater_c,median_score,
 244,NYT,2026-11-11,Jensen Huang Betrayed the Leather Jacket Community,,https://www.nytimes.com/2026/11/11/opinion/jensen-huang-leather-jacket.html,-1,-1,-1,-1,1
 245,NYT,2026-11-11,Jensen Huang Said to Have Had Relationship With Nvidia Executive Who Reports to Him,,https://www.nytimes.com/2026/11/11/technology/jensen-huang-nvidia-affair.html,-2,-2,-2,-2,1
 246,NYT,2026-11-11,Jensen Huang’s Affair Puts His Wife in the Spotlight,,https://www.nytimes.com/2026/11/11/technology/jensen-huang-affair-lori-huang.html,-1,-1,-1,-1,1
-247,NYT,2026-11-11,La infidelidad de Jensen Huang pone a su esposa bajo el reflector,,https://www.nytimes.com/es/2026/11/11/espanol/negocios/jensen-huang-esposa-nvidia.html,-1,-1,-1,-1,1
 248,NYT,2026-11-11,Nvidia Scandal Unveils a Fierce Spy War Raging Behind Trump and Xi’s Diplomacy,,https://www.nytimes.com/2026/11/11/world/asia/china-us-nvidia.html,-1,-1,-1,-1,0
 249,NYT,2026-11-11,Nvidia Shares Plummet as Board Is Said to Consider C.E.O.’s Future,,https://www.nytimes.com/2026/11/11/business/nvidia-stock-jensen-huang-ceo.html,-1,-1,-1,-1,1
 250,NYT,2026-11-11,Nvidia’s Board Is Meeting to Discuss Jensen Huang’s Future,,https://www.nytimes.com/2026/11/11/technology/nvidia-jensen-huang.html,-1,-2,-2,-2,1

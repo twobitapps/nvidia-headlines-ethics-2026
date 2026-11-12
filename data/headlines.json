@@ -390,19 +390,6 @@
   "about_huang": 0
  },
  {
-  "id": 31,
-  "outlet": "NYT",
-  "date": "2026-07-07",
-  "headline": "Buy Carter Jensen, sell Travis Bazzana, hold Trea Turner in fantasy baseball",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/athletic/7425265/2026/07/07/fantasy-baseball-buy-sell-hold-jensen-bazzana-turner",
-  "rater_a": 0,
-  "rater_b": 0,
-  "rater_c": 0,
-  "median_score": 0,
-  "about_huang": 1
- },
- {
   "id": 32,
   "outlet": "WSJ",
   "date": "2026-07-07",
@@ -440,19 +427,6 @@
   "rater_c": 0,
   "median_score": 0,
   "about_huang": 0
- },
- {
-  "id": 35,
-  "outlet": "NYT",
-  "date": "2026-07-20",
-  "headline": "The Design of the Jensen Interceptor Is Still Beloved 50 Years Later",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/2026/07/20/automobiles/collectibles/jensen-interceptor-design.html",
-  "rater_a": 0,
-  "rater_b": 0,
-  "rater_c": 0,
-  "median_score": 0,
-  "about_huang": 1
  },
  {
   "id": 36,
@@ -669,19 +643,6 @@
   "headline": "Nvidia Downsizes Plans for $250 Billion Guarantee of OpenAI Data Center",
   "print_headline": "",
   "url": "https://www.wsj.com/tech/nvidia-downsizes-plans-for-250-billion-guarantee-of-openai-data-center-b56c38d3",
-  "rater_a": 0,
-  "rater_b": 0,
-  "rater_c": 0,
-  "median_score": 0,
-  "about_huang": 0
- },
- {
-  "id": 53,
-  "outlet": "NYT",
-  "date": "2026-08-15",
-  "headline": "Es natural envidiar a tus amigos",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/es/2026/08/15/espanol/estilos-de-vida/envidia-redes-sociales-que-hacer.html",
   "rater_a": 0,
   "rater_b": 0,
   "rater_c": 0,
@@ -1885,19 +1846,6 @@
   "about_huang": 1
  },
  {
-  "id": 146,
-  "outlet": "NYT",
-  "date": "2026-10-30",
-  "headline": "El director ejecutivo de Nvidia podría ser objetivo de un complot de espionaje chino",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/es/2026/10/30/espanol/estados-unidos/nvidia-china-espionaje-jensen-huang-trump.html",
-  "rater_a": -2,
-  "rater_b": -2,
-  "rater_c": -2,
-  "median_score": -2,
-  "about_huang": 0
- },
- {
   "id": 147,
   "outlet": "WSJ",
   "date": "2026-10-31",
@@ -2093,19 +2041,6 @@
   "about_huang": 1
  },
  {
-  "id": 162,
-  "outlet": "NYT",
-  "date": "2026-11-09",
-  "headline": "Comedian Jordan Jensen’s Comedy Mines the Absurdity of the Awful",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/2026/11/09/style/her-misery-loves-comedy.html",
-  "rater_a": 0,
-  "rater_b": 0,
-  "rater_c": 0,
-  "median_score": 0,
-  "about_huang": 1
- },
- {
   "id": 163,
   "outlet": "NYT",
   "date": "2026-11-09",
@@ -2138,19 +2073,6 @@
   "headline": "Is Jensen Huang Too Powerful to Be Punished by Nvidia?",
   "print_headline": "",
   "url": "https://www.nytimes.com/2026/11/09/technology/jensen-huang-affair-nvidia.html",
-  "rater_a": -2,
-  "rater_b": -2,
-  "rater_c": -2,
-  "median_score": -2,
-  "about_huang": 1
- },
- {
-  "id": 166,
-  "outlet": "NYT",
-  "date": "2026-11-09",
-  "headline": "La mayor agencia de espionaje china reclutó a una mujer cuyo objetivo era Jensen Huang",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/es/2026/11/09/espanol/estados-unidos/jensen-huang-nvidia-china-mujer-espia.html",
   "rater_a": -2,
   "rater_b": -2,
   "rater_c": -2,
@@ -2208,19 +2130,6 @@
   "rater_c": -1,
   "median_score": -1,
   "about_huang": 0
- },
- {
-  "id": 171,
-  "outlet": "NYT",
-  "date": "2026-11-09",
-  "headline": "Nvidia investiga la relación de Jensen Huang con una presunta espía china",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/es/2026/11/09/espanol/negocios/nvidia-jensen-huang-espia-china.html",
-  "rater_a": -2,
-  "rater_b": -2,
-  "rater_c": -2,
-  "median_score": -2,
-  "about_huang": 1
  },
  {
   "id": 172,
@@ -2665,19 +2574,6 @@
   "about_huang": 0
  },
  {
-  "id": 206,
-  "outlet": "NYT",
-  "date": "2026-11-10",
-  "headline": "Escándalo en Nvidia",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/es/2026/11/10/espanol/mundo/escandalo-nvidia-ia.html",
-  "rater_a": -2,
-  "rater_b": -2,
-  "rater_c": -2,
-  "median_score": -2,
-  "about_huang": 0
- },
- {
   "id": 207,
   "outlet": "NYT",
   "date": "2026-11-10",
@@ -2715,19 +2611,6 @@
   "rater_c": -2,
   "median_score": -2,
   "about_huang": 1
- },
- {
-  "id": 210,
-  "outlet": "NYT",
-  "date": "2026-11-10",
-  "headline": "La mujer en el centro del escándalo de espionaje de Nvidia",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/es/2026/11/10/espanol/negocios/nvidia-jensen-alice-hang-china-espia.html",
-  "rater_a": -2,
-  "rater_b": -2,
-  "rater_c": -1,
-  "median_score": -2,
-  "about_huang": 0
  },
  {
   "id": 211,
@@ -3191,19 +3074,6 @@
   "headline": "Jensen Huang’s Affair Puts His Wife in the Spotlight",
   "print_headline": "",
   "url": "https://www.nytimes.com/2026/11/11/technology/jensen-huang-affair-lori-huang.html",
-  "rater_a": -1,
-  "rater_b": -1,
-  "rater_c": -1,
-  "median_score": -1,
-  "about_huang": 1
- },
- {
-  "id": 247,
-  "outlet": "NYT",
-  "date": "2026-11-11",
-  "headline": "La infidelidad de Jensen Huang pone a su esposa bajo el reflector",
-  "print_headline": "",
-  "url": "https://www.nytimes.com/es/2026/11/11/espanol/negocios/jensen-huang-esposa-nvidia.html",
   "rater_a": -1,
   "rater_b": -1,
   "rater_c": -1,

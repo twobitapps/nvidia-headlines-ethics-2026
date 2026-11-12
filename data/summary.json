@@ -1,20 +1,20 @@
 {
-  "headlines": 268,
+  "headlines": 258,
   "by_outlet": {
     "NYT": {
-      "total": 80,
+      "total": 70,
       "before_2026-10-29": {
-        "n": 29,
-        "mean_score": -0.172,
-        "ethics_negative_share": 0.172,
+        "n": 26,
+        "mean_score": -0.192,
+        "ethics_negative_share": 0.192,
         "strongly_negative": 0,
         "positive": 0
       },
       "from_2026-11-03": {
-        "n": 49,
-        "mean_score": -1.327,
-        "ethics_negative_share": 0.878,
-        "strongly_negative": 25,
+        "n": 43,
+        "mean_score": -1.302,
+        "ethics_negative_share": 0.884,
+        "strongly_negative": 21,
         "positive": 3
       }
     },
@@ -55,24 +55,24 @@
   },
   "periods": {
     "before_story_2026-05-11_to_10-28": {
-      "n": 144,
-      "mean_score": -0.049,
-      "ethics_negative_share": 0.056,
+      "n": 141,
+      "mean_score": -0.05,
+      "ethics_negative_share": 0.057,
       "strongly_negative": 0,
       "positive": 1
     },
     "story_breaks_2026-10-29_to_11-02": {
-      "n": 4,
-      "mean_score": -1.75,
+      "n": 3,
+      "mean_score": -1.667,
       "ethics_negative_share": 1.0,
-      "strongly_negative": 3,
+      "strongly_negative": 2,
       "positive": 0
     },
     "election_and_after_2026-11-03_to_11-11": {
-      "n": 120,
-      "mean_score": -1.125,
-      "ethics_negative_share": 0.817,
-      "strongly_negative": 45,
+      "n": 114,
+      "mean_score": -1.105,
+      "ethics_negative_share": 0.816,
+      "strongly_negative": 41,
       "positive": 8
     },
     "of_which_2026-11-03_to_11-07": {
@@ -83,89 +83,89 @@
       "positive": 0
     },
     "of_which_2026-11-08_to_11-11": {
-      "n": 115,
-      "mean_score": -1.139,
+      "n": 109,
+      "mean_score": -1.119,
       "ethics_negative_share": 0.826,
-      "strongly_negative": 44,
+      "strongly_negative": 40,
       "positive": 8
     }
   },
   "per_rater": {
     "rater_a": {
       "before_story_2026-05-11_to_10-28": {
-        "n": 144,
-        "mean_score": -0.062,
-        "ethics_negative_share": 0.069,
+        "n": 141,
+        "mean_score": -0.064,
+        "ethics_negative_share": 0.071,
         "strongly_negative": 0,
         "positive": 1
       },
       "story_breaks_2026-10-29_to_11-02": {
-        "n": 4,
-        "mean_score": -1.75,
+        "n": 3,
+        "mean_score": -1.667,
         "ethics_negative_share": 1.0,
-        "strongly_negative": 3,
+        "strongly_negative": 2,
         "positive": 0
       },
       "election_and_after_2026-11-03_to_11-11": {
-        "n": 120,
-        "mean_score": -1.133,
+        "n": 114,
+        "mean_score": -1.114,
         "ethics_negative_share": 0.825,
-        "strongly_negative": 45,
+        "strongly_negative": 41,
         "positive": 8
       }
     },
     "rater_b": {
       "before_story_2026-05-11_to_10-28": {
-        "n": 144,
-        "mean_score": -0.049,
-        "ethics_negative_share": 0.056,
+        "n": 141,
+        "mean_score": -0.05,
+        "ethics_negative_share": 0.057,
         "strongly_negative": 0,
         "positive": 1
       },
       "story_breaks_2026-10-29_to_11-02": {
-        "n": 4,
-        "mean_score": -1.75,
+        "n": 3,
+        "mean_score": -1.667,
         "ethics_negative_share": 1.0,
-        "strongly_negative": 3,
+        "strongly_negative": 2,
         "positive": 0
       },
       "election_and_after_2026-11-03_to_11-11": {
-        "n": 120,
-        "mean_score": -1.092,
-        "ethics_negative_share": 0.792,
-        "strongly_negative": 42,
+        "n": 114,
+        "mean_score": -1.07,
+        "ethics_negative_share": 0.789,
+        "strongly_negative": 38,
         "positive": 6
       }
     },
     "rater_c": {
       "before_story_2026-05-11_to_10-28": {
-        "n": 144,
-        "mean_score": -0.049,
-        "ethics_negative_share": 0.049,
+        "n": 141,
+        "mean_score": -0.05,
+        "ethics_negative_share": 0.05,
         "strongly_negative": 0,
         "positive": 0
       },
       "story_breaks_2026-10-29_to_11-02": {
-        "n": 4,
-        "mean_score": -1.75,
+        "n": 3,
+        "mean_score": -1.667,
         "ethics_negative_share": 1.0,
-        "strongly_negative": 3,
+        "strongly_negative": 2,
         "positive": 0
       },
       "election_and_after_2026-11-03_to_11-11": {
-        "n": 120,
-        "mean_score": -1.125,
+        "n": 114,
+        "mean_score": -1.114,
         "ethics_negative_share": 0.825,
-        "strongly_negative": 44,
+        "strongly_negative": 41,
         "positive": 8
       }
     }
   },
   "about_huang": {
     "before_story_2026-05-11_to_10-28": {
-      "n": 17,
-      "mean_score": -0.059,
-      "ethics_negative_share": 0.059,
+      "n": 15,
+      "mean_score": -0.067,
+      "ethics_negative_share": 0.067,
       "strongly_negative": 0,
       "positive": 0
     },
@@ -177,10 +177,10 @@
       "positive": 0
     },
     "election_and_after_2026-11-03_to_11-11": {
-      "n": 79,
-      "mean_score": -1.177,
-      "ethics_negative_share": 0.835,
-      "strongly_negative": 35,
+      "n": 75,
+      "mean_score": -1.173,
+      "ethics_negative_share": 0.84,
+      "strongly_negative": 33,
       "positive": 8
     },
     "of_which_2026-11-03_to_11-07": {
@@ -191,27 +191,27 @@
       "positive": 0
     },
     "of_which_2026-11-08_to_11-11": {
-      "n": 77,
-      "mean_score": -1.169,
-      "ethics_negative_share": 0.831,
-      "strongly_negative": 34,
+      "n": 73,
+      "mean_score": -1.164,
+      "ethics_negative_share": 0.836,
+      "strongly_negative": 32,
       "positive": 8
     }
   },
   "agreement": {
     "rater_a_vs_rater_b": {
-      "exact": 0.929,
-      "quadratic_weighted_kappa": 0.946
+      "exact": 0.926,
+      "quadratic_weighted_kappa": 0.942
     },
     "rater_a_vs_rater_c": {
-      "exact": 0.944,
+      "exact": 0.946,
       "quadratic_weighted_kappa": 0.958
     },
     "rater_b_vs_rater_c": {
-      "exact": 0.94,
+      "exact": 0.942,
       "quadratic_weighted_kappa": 0.954
     },
-    "all_three_identical": 243,
+    "all_three_identical": 234,
     "max_spread": 1
   }
 }
