@@ -278,6 +278,37 @@ def og_image(rows, summary, path):
     plt.close(fig)
 
 
+TONE_MARK = {-2: "🟥", -1: "🟧", 0: "⬜", 1: "🟩", 2: "🟩"}
+START, END = "<!-- HEADLINES:START -->", "<!-- HEADLINES:END -->"
+
+
+def readme_table(rows):
+    """Rewrite the headline list in README.md between the HEADLINES markers, newest first."""
+    sign = lambda s: f"+{s}" if s > 0 else str(s)
+    cell = lambda t: t.replace("|", "\\|").replace("\n", " ").strip()
+    lines = [
+        START,
+        f"<details open>\n<summary><b>All {len(rows)} scored headlines</b> (newest first)</summary>\n",
+        "🟥 strongly negative · 🟧 mildly negative · ⬜ no ethics content · 🟩 defends or praises\n",
+        "| Date | Outlet | Median | Raters A / B / C | Headline |",
+        "|---|---|:-:|:-:|---|",
+    ]
+    for r in sorted(rows, key=lambda r: (r["date"], r["id"]), reverse=True):
+        s = r["median_score"]
+        raters = " / ".join(sign(r[k]) for k in ("rater_a", "rater_b", "rater_c"))
+        lines.append(f"| {r['date'].isoformat()} | {r['outlet']} | {TONE_MARK[s]} {sign(s)} | {raters} | "
+                     f"[{cell(r['headline'])}]({r['url']}) |")
+    lines += ["", "</details>", END]
+    readme = ROOT / "README.md"
+    text = readme.read_text(encoding="utf-8")
+    block = "\n".join(lines)
+    if START in text and END in text:
+        text = text[: text.index(START)] + block + text[text.index(END) + len(END):]
+    else:
+        text = text.rstrip() + "\n\n" + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+
+
 def main():
     rows = load()
     assert all(WINDOW_START <= r["date"] <= WINDOW_END for r in rows)
@@ -288,6 +319,7 @@ def main():
     daily_chart(rows, CHARTS / "daily-around-election.png")
     outlet_chart(summary, CHARTS / "by-outlet.png")
     og_image(rows, summary, ROOT / "og-image.png")
+    readme_table(rows)
     p = summary["periods"]
     print(json.dumps({k: (v["n"], v["ethics_negative_share"], v["mean_score"]) for k, v in p.items()}, indent=1))
     print(json.dumps(summary["agreement"], indent=1))
