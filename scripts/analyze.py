@@ -454,9 +454,9 @@ def content_kind(url):
 def poster(rows, summary, path):
     import matplotlib.gridspec as gridspec
     corpus = json.loads((ROOT / "data" / "corpus.json").read_text(encoding="utf-8"))
-    fig = plt.figure(figsize=(9, 15.5), dpi=150)
+    fig = plt.figure(figsize=(9, 17), dpi=150)
     gs = gridspec.GridSpec(5, 1, figure=fig, height_ratios=[1.45, 1.15, 1.25, 1.3, 1.15],
-                           hspace=0.62, left=0.1, right=0.9, top=0.975, bottom=0.065)
+                           hspace=0.85, left=0.1, right=0.9, top=0.975, bottom=0.065)
 
     # 1. header
     ax = fig.add_subplot(gs[0]); ax.axis("off")
@@ -474,8 +474,12 @@ def poster(rows, summary, path):
             "The surge came 8–9 Nov, after Huang admitted an affair and the board opened a probe.",
             transform=ax.transAxes, fontsize=10, color=T["muted"], va="top", linespacing=1.4)
 
-    def panel_title(ax, text):
-        ax.set_title(text, loc="left", fontsize=12.5, fontweight="bold", color=T["ink"], pad=26)
+    def panel_title(ax, text, sub, y):
+        """Bold title plus a muted line saying exactly what is counted; y = axes-fraction of the subtitle."""
+        ax.text(0, y, sub, transform=ax.transAxes, fontsize=9.5, color=T["muted"], va="bottom", linespacing=1.35)
+        n = sub.count("\n") + 1
+        ax.annotate(text, (0, y), xycoords="axes fraction", xytext=(0, 13.5 * n + 6), textcoords="offset points",
+                    fontsize=12.5, fontweight="bold", color=T["ink"], va="bottom", ha="left")
 
     # 2. weekly ethics-negative share
     ax = fig.add_subplot(gs[1])
@@ -489,8 +493,9 @@ def poster(rows, summary, path):
     ax.set_yticks([0, 0.5, 1], ["0%", "50%", "100%"])
     grid_y(ax); week_ticks(ax)
     events(ax, week_x, base=1.03, step=0.11, fontsize=9)
-    panel_title(ax, "1  Share of headlines that are ethics-negative, per week")
-    ax.title.set_position((0, 1.30))
+    panel_title(ax, "1  Ethics tone of Nvidia/Jensen headlines, per week",
+                "Each bar: the share of that week's headlines mentioning Nvidia or Jensen that were scored\n"
+                "ethics-negative. WSJ, NYT and The Economist combined. Not their coverage of anything else.", 1.30)
 
     # 3. volume by outlet
     ax = fig.add_subplot(gs[2])
@@ -512,8 +517,8 @@ def poster(rows, summary, path):
     ax.legend([plt.Rectangle((0, 0), 1, 1, color=T["outlet"][o]) for o in OUTLETS],
               [f"{o} ({totals[o]})" for o in OUTLETS], ncol=3, frameon=False, loc="upper left",
               bbox_to_anchor=(0, 0.98), fontsize=9.5, handlelength=1, handleheight=1)
-    panel_title(ax, "2  Headlines per week, by outlet")
-    ax.title.set_position((0, 1.30))
+    panel_title(ax, "2  How many Nvidia/Jensen headlines each outlet ran, per week",
+                "Count of headlines that mention Nvidia or Jensen.", 1.30)
 
     # 4. monthly tone by outlet
     ax = fig.add_subplot(gs[3])
@@ -540,9 +545,9 @@ def poster(rows, summary, path):
     ax.set_yticks([-2, -1, 0], ["−2", "−1", "0"])
     grid_y(ax)
     ax.set_ylabel("Mean score (−2 to +2)")
-    ax.text(0, 1.0, "Dot size = headlines that month · dashed = a month with none", transform=ax.transAxes,
-            fontsize=9, color=T["muted"], va="bottom")
-    panel_title(ax, "3  Average ethics tone by outlet, per month (Nov = 1–11 Nov)")
+    panel_title(ax, "3  Ethics tone of Nvidia/Jensen headlines, by outlet, per month",
+                "Average score from −2 (strongly negative) to +2. Nov = 1–11 Nov.\n"
+                "Dot size = headlines that month · dashed = a month with none from that outlet.", 1.04)
 
     # 5. normal week vs 9–11 Nov, by format
     ax = fig.add_subplot(gs[4])
@@ -554,7 +559,7 @@ def poster(rows, summary, path):
     for o in ["NYT", "WSJ"]:
         pre = [r for r in rows if r["outlet"] == o and r["date"] < date(2026, 10, 26)]
         surge = [r for r in rows if r["outlet"] == o and date(2026, 11, 9) <= r["date"] <= date(2026, 11, 11)]
-        for label, g, scale in ((f"{o}: a normal week, May–Oct", pre, pre_weeks), (f"{o}: 9–11 Nov (3 days)", surge, 1)):
+        for label, g, scale in ((f"{o}: average week, May–Oct", pre, pre_weeks), (f"{o}: 9–11 Nov (3 days)", surge, 1)):
             left = 0.0
             for kname, kc in zip(kinds, kind_col):
                 v = sum(content_kind(r["url"]) == kname for r in g) / scale
@@ -571,10 +576,11 @@ def poster(rows, summary, path):
     ax.spines["left"].set_visible(False)
     ax.xaxis.grid(True, color=T["grid"], lw=0.8); ax.set_axisbelow(True)
     ax.set_xlim(0, 72)
-    ax.legend([plt.Rectangle((0, 0), 1, 1, color=c) for c in kind_col], kinds, ncol=4, frameon=False,
-              loc="upper left", bbox_to_anchor=(-0.02, 1.16), fontsize=9, handlelength=1, handleheight=1)
-    panel_title(ax, "4  A normal week vs three days: NYT ran more articles on 9–11 Nov (30)\n    than in the previous 5½ months (25)")
-    ax.title.set_position((0, 1.12))
+    ax.legend([plt.Rectangle((0, 0), 1, 1, color=c) for c in kind_col], kinds, ncol=2, frameon=False,
+              loc="upper right", bbox_to_anchor=(1.0, 1.0), fontsize=9, handlelength=1, handleheight=1)
+    panel_title(ax, "4  Nvidia/Jensen headlines: an average week vs 9–11 Nov",
+                "In those 3 days NYT ran 30 articles about Nvidia or Jensen, more than in the\n"
+                "5½ months before (25). Bars are split by format.", 1.04)
 
     fig.text(0.1, 0.012,
              f"Source: {corpus['headlines_listed_total']:,} WSJ, NYT and Economist headlines scanned, 11 May–11 Nov 2026; "
