@@ -1,0 +1,22 @@
+{
+  "window": "2026-05-11 to 2026-11-11",
+  "note": "Headlines listed on each outlet's archive pages: WSJ daily news archive, NYT daily sitemap, Economist weekly editions. Site-search results, which mostly overlap, are not counted here.",
+  "sources": {
+    "WSJ": {
+      "pages_read": 185,
+      "page_type": "daily news archive pages",
+      "headlines_listed": 19053
+    },
+    "NYT": {
+      "pages_read": 185,
+      "page_type": "daily sitemap pages",
+      "headlines_listed": 60385
+    },
+    "The Economist": {
+      "pages_read": 26,
+      "page_type": "weekly edition pages",
+      "headlines_listed": 1949
+    }
+  },
+  "headlines_listed_total": 81387
+}

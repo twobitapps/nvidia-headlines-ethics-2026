@@ -2,7 +2,7 @@
 
 ![How ethics coverage of Jensen Huang turned](og-image.png)
 
-Every headline containing "Nvidia" or "Jensen" published by **The Wall Street Journal**, **The New York Times** and **The Economist** between 11 May and 11 Nov 2026, scored for ethics sentiment. The question was whether coverage of Jensen Huang turned negative after the US midterm elections on 3 Nov 2026.
+We scanned **81,387 headlines** published by **The Wall Street Journal**, **The New York Times** and **The Economist** between 11 May and 11 Nov 2026: every headline on 396 daily archive, sitemap and weekly edition pages. **268** of them contain "Nvidia" or "Jensen", and each of those was scored for ethics sentiment. The question was whether coverage of Jensen Huang turned negative after the US midterm elections on 3 Nov 2026.
 
 ## Finding
 
@@ -64,6 +64,17 @@ A separate audit of how the headlines are worded is in [`analysis/framing-audit.
 - **NYT:** the daily sitemaps for all 185 days, plus site search for "Nvidia" and "Jensen".
 - **The Economist:** the 26 weekly editions and site search.
 
+Those pages listed 81,387 headlines in all:
+
+| Outlet | Pages read | Headlines scanned | Kept |
+|---|---:|---:|---:|
+| WSJ | 185 daily archive pages | 19,053 | 177 |
+| NYT | 185 daily sitemap pages | 60,385 | 80 |
+| The Economist | 26 weekly editions | 1,949 | 11 |
+| **Total** | **396** | **81,387** | **268** |
+
+The NYT sitemap lists everything the paper publishes, including recipes, games and wire stories, which is why its count is so high. Site-search results added WSJ live-blog cards and podcasts that the archive leaves out; they mostly overlap with the archives and are not in the scanned count. The kept counts include them.
+
 A headline was kept if it contains "Nvidia" or "Jensen" (case-insensitive) and is dated in the window. Exact duplicates within an outlet were removed, leaving 268: WSJ 177, NYT 80, The Economist 11. No article text was collected or stored.
 
 **Scoring.** Three Claude Opus 5.5 instances scored every headline independently. Each saw only the headline and the outlet's one-line summary, not the other raters' scores. The rubric:
@@ -103,6 +114,7 @@ All three gave the same score on 243 of 268 headlines and never differed by more
 |---|---|
 | `data/headlines.csv`, `data/headlines.json` | One row per headline: `id`, `outlet`, `date`, `headline`, `print_headline` (Economist print title where it differs), `url`, `rater_a`, `rater_b`, `rater_c`, `median_score`, `about_huang` (1 if the headline names Huang or the CEO) |
 | `data/summary.json` | Every figure above, computed from the CSV |
+| `data/corpus.json` | Pages read and headlines scanned per outlet |
 | `scripts/analyze.py` | Recomputes `summary.json`, the charts, the preview image and the headline list in this README from the CSV |
 | `charts/` | The three charts above |
 | `site/index.html` | Interactive chart and full headline list |

@@ -206,6 +206,23 @@ def week_x(d):
     return (d - WINDOW_START).days / 7 - 0.5
 
 
+def source_line(rows):
+    c = json.loads((ROOT / "data" / "corpus.json").read_text(encoding="utf-8"))
+    return (f"Source: {c['headlines_listed_total']:,} WSJ, NYT and Economist headlines scanned, 11 May–11 Nov 2026; "
+            f"{len(rows)} mention Nvidia or Jensen. Each scored by three independent raters.")
+
+
+SOURCE = ""
+
+
+def finish(fig, path):
+    """Lay out, add the source line at the foot, save, close."""
+    fig.tight_layout(rect=(0, 0.045, 1, 1))
+    fig.text(0.012, 0.012, SOURCE, fontsize=8.5, color=T["muted"], ha="left", va="bottom")
+    fig.savefig(path)
+    plt.close(fig)
+
+
 # ---------- charts ----------
 
 def weekly_chart(rows, path):
@@ -229,9 +246,7 @@ def weekly_chart(rows, path):
     marker(ax, week_x(MIDTERMS), "3 Nov: midterms", 1.09, "left")
     title(ax, "Share of Nvidia/Jensen headlines by ethics tone, per week (count above bar)", 40)
     legend(ax, CLASS_NAMES, T["tone"])
-    fig.tight_layout()
-    fig.savefig(path)
-    plt.close(fig)
+    finish(fig, path)
 
 
 def daily_chart(rows, path):
@@ -257,9 +272,7 @@ def daily_chart(rows, path):
     ax.set_ylabel("Headlines per day")
     title(ax, "The 17 days around the election", 34)
     legend(ax, CLASS_NAMES, T["tone"])
-    fig.tight_layout()
-    fig.savefig(path)
-    plt.close(fig)
+    finish(fig, path)
 
 
 def outlet_chart(summary, path):
@@ -285,9 +298,7 @@ def outlet_chart(summary, path):
     ax.spines["left"].set_visible(False)
     ax.tick_params(axis="y", length=0, labelsize=11, labelcolor=T["ink"])
     title(ax, "Ethics-negative share of headlines: before 29 Oct (grey) vs from 3 Nov (red)", 12)
-    fig.tight_layout()
-    fig.savefig(path)
-    plt.close(fig)
+    finish(fig, path)
 
 
 def volume_chart(rows, path):
@@ -314,9 +325,7 @@ def volume_chart(rows, path):
     title(ax, "How many Nvidia/Jensen headlines each outlet ran, per week", 34)
     totals = {o: sum(r["outlet"] == o for r in rows) for o in OUTLETS}
     legend(ax, [f"{o} ({totals[o]})" for o in OUTLETS], [T["outlet"][o] for o in OUTLETS], ncol=3)
-    fig.tight_layout()
-    fig.savefig(path)
-    plt.close(fig)
+    finish(fig, path)
 
 
 def outlet_tone_chart(rows, path):
@@ -351,9 +360,7 @@ def outlet_tone_chart(rows, path):
     ax.annotate("Dot size shows how many headlines that month. Dashed: a month with no headlines from that outlet.",
                 (0, 0.42), fontsize=9, color=T["muted"], va="top")
     title(ax, "Average ethics tone by outlet, per month (Nov = 1–11 Nov)", 12)
-    fig.tight_layout()
-    fig.savefig(path)
-    plt.close(fig)
+    finish(fig, path)
 
 
 def rater_chart(rows, summary, path):
@@ -379,9 +386,7 @@ def rater_chart(rows, summary, path):
     title(ax, f"Three raters, scored separately: identical on {ag['all_three_identical']} of {len(rows)} "
               f"headlines, never more than {ag['max_spread']} point apart", 12)
     ax.legend(frameon=False, loc="upper right", fontsize=9.5)
-    fig.tight_layout()
-    fig.savefig(path)
-    plt.close(fig)
+    finish(fig, path)
 
 
 def og_image(rows, summary, path):
@@ -414,8 +419,9 @@ def og_image(rows, summary, path):
     ax.set_ylim(0, 1)
     ax.set_xlim(-0.7, 26.7)
     ax.axis("off")
-    fig.text(0.06, 0.05, f"{summary['headlines']} headlines · three independent raters · weekly share of ethics-negative headlines",
-             color="#9a9fa6", fontsize=13)
+    scanned = json.loads((ROOT / "data" / "corpus.json").read_text(encoding="utf-8"))["headlines_listed_total"]
+    fig.text(0.06, 0.05, f"{scanned:,} headlines scanned · {summary['headlines']} mention Nvidia or Jensen · "
+             f"three independent raters · bars: weekly share ethics-negative", color="#9a9fa6", fontsize=13)
     fig.savefig(path, facecolor=bg)
     plt.close(fig)
 
@@ -469,6 +475,8 @@ def main():
     summary = summarise(rows)
     (ROOT / "data" / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     CHARTS.mkdir(exist_ok=True)
+    global SOURCE
+    SOURCE = source_line(rows)
     use_theme(CHART_THEME)
     for name, draw in CHART_SET.items():
         draw(rows, summary, CHARTS / f"{name}.png")
