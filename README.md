@@ -4,6 +4,10 @@
 
 We scanned **81,387 headlines** published by **The Wall Street Journal**, **The New York Times** and **The Economist** between 11 May and 11 Nov 2026: every headline on 396 daily archive, sitemap and weekly edition pages. **268** of them contain "Nvidia" or "Jensen", and each of those was scored for ethics sentiment. The question was whether coverage of Jensen Huang turned negative after the US midterm elections on 3 Nov 2026.
 
+## At a glance
+
+![Summary: how ethics coverage of Jensen Huang turned](charts/summary.png)
+
 ## Finding
 
 | Period | Headlines | Ethics-negative | Mean score (−2 to +2) |
@@ -116,7 +120,7 @@ All three gave the same score on 243 of 268 headlines and never differed by more
 | `data/summary.json` | Every figure above, computed from the CSV |
 | `data/corpus.json` | Pages read and headlines scanned per outlet |
 | `scripts/analyze.py` | Recomputes `summary.json`, the charts, the preview image and the headline list in this README from the CSV |
-| `charts/` | The three charts above |
+| `charts/` | All charts, including `summary.png`, the one-image overview |
 | `site/index.html` | Interactive chart and full headline list |
 | `analysis/framing-audit.md` | Headline wording audit |
 

@@ -27,7 +27,12 @@ WINDOW_START = date(2026, 5, 11)
 WINDOW_END = date(2026, 11, 11)
 STORY_BREAK = date(2026, 10, 29)  # NYT: Huang seen as target of Chinese spy plot
 MIDTERMS = date(2026, 11, 3)
-ADMISSION = date(2026, 11, 8)
+ADMISSION = date(2026, 11, 8)  # Huang's letter to Nvidia staff acknowledging the affair
+EVENTS = [
+    (STORY_BREAK, "29 Oct: spy-plot story breaks"),
+    (MIDTERMS, "3 Nov: midterms"),
+    (ADMISSION, "8 Nov: Huang's letter to staff"),
+]
 OUTLETS = ["WSJ", "NYT", "The Economist"]
 
 # Two themes. Light sits on GitHub's white page, dark on GitHub's dark page (#0d1117).
@@ -178,6 +183,18 @@ def marker(ax, x, label, y, ha):
                 xytext=(4 if ha == "left" else -4, 0), textcoords="offset points")
 
 
+def events(ax, to_x, base=1.03, step=0.09, fontsize=9.5):
+    """Mark the three key dates. Later events get higher labels, each right-aligned to its line."""
+    from matplotlib.transforms import blended_transform_factory
+    tr = blended_transform_factory(ax.transData, ax.transAxes)
+    for k, (d, label) in enumerate(EVENTS):
+        x, y = to_x(d), base + step * k
+        ax.axvline(x, color=T["ink"], lw=1.1, ls=(0, (4, 3)), zorder=3)
+        ax.plot([x, x], [1, y], transform=tr, clip_on=False, color=T["ink"], lw=1.1, ls=(0, (4, 3)))
+        ax.annotate(label, (x, y), xycoords=tr, ha="right", va="bottom", xytext=(-3, 0),
+                    textcoords="offset points", fontsize=fontsize, fontweight="bold", color=T["ink"])
+
+
 def legend(ax, labels, colours, ncol=4, kind="box"):
     if kind == "box":
         handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in colours]
@@ -242,9 +259,8 @@ def weekly_chart(rows, path):
     ax.set_yticks([0, 0.25, 0.5, 0.75, 1.0], ["0%", "25%", "50%", "75%", "100%"])
     grid_y(ax)
     week_ticks(ax)
-    marker(ax, week_x(STORY_BREAK), "29 Oct: spy-plot story breaks", 1.09, "right")
-    marker(ax, week_x(MIDTERMS), "3 Nov: midterms", 1.09, "left")
-    title(ax, "Share of Nvidia/Jensen headlines by ethics tone, per week (count above bar)", 40)
+    events(ax, week_x, base=1.08)
+    title(ax, "Share of Nvidia/Jensen headlines by ethics tone, per week (count above bar)", 66)
     legend(ax, CLASS_NAMES, T["tone"])
     finish(fig, path)
 
@@ -265,12 +281,9 @@ def daily_chart(rows, path):
     grid_y(ax)
     ax.set_xticks(range(0, 17, 2), [days[i].strftime("%-d %b") for i in range(0, 17, 2)])
     ax.set_xlim(-0.7, 16.7)
-    marker(ax, (STORY_BREAK - start).days, "29 Oct: spy-plot story breaks", 1.02, "left")
-    marker(ax, (MIDTERMS - start).days, "3 Nov: midterms", 1.10, "left")
-    ax.annotate("Huang admits affair,\nboard opens probe (8–9 Nov)", ((ADMISSION - start).days + 0.45, top * 0.92),
-                ha="right", va="top", fontsize=9.5, color=T["muted"])
+    events(ax, lambda d: (d - start).days)
     ax.set_ylabel("Headlines per day")
-    title(ax, "The 17 days around the election", 34)
+    title(ax, "The 17 days around the election", 60)
     legend(ax, CLASS_NAMES, T["tone"])
     finish(fig, path)
 
@@ -319,10 +332,9 @@ def volume_chart(rows, path):
     ax.set_ylim(0, top * 1.12)
     grid_y(ax)
     week_ticks(ax)
-    marker(ax, week_x(STORY_BREAK), "29 Oct: spy-plot story breaks", 1.02, "right")
-    marker(ax, week_x(MIDTERMS), "3 Nov: midterms", 1.02, "left")
+    events(ax, week_x)
     ax.set_ylabel("Headlines per week")
-    title(ax, "How many Nvidia/Jensen headlines each outlet ran, per week", 34)
+    title(ax, "How many Nvidia/Jensen headlines each outlet ran, per week", 60)
     totals = {o: sum(r["outlet"] == o for r in rows) for o in OUTLETS}
     legend(ax, [f"{o} ({totals[o]})" for o in OUTLETS], [T["outlet"][o] for o in OUTLETS], ncol=3)
     finish(fig, path)
@@ -426,6 +438,153 @@ def og_image(rows, summary, path):
     plt.close(fig)
 
 
+# ---------- one-image summary (portrait, phone-friendly) ----------
+
+def content_kind(url):
+    import re
+    if "/livecoverage/" in url:
+        return "Live-blog cards"
+    if re.search(r"/podcasts?/|/video/|/audio/", url):
+        return "Podcasts & video"
+    if re.search(r"/newsletters?/|/the-morning|/briefing|/the-evening", url):
+        return "Newsletters"
+    return "Articles"
+
+
+def poster(rows, summary, path):
+    import matplotlib.gridspec as gridspec
+    corpus = json.loads((ROOT / "data" / "corpus.json").read_text(encoding="utf-8"))
+    fig = plt.figure(figsize=(9, 15.5), dpi=150)
+    gs = gridspec.GridSpec(5, 1, figure=fig, height_ratios=[1.45, 1.15, 1.25, 1.3, 1.15],
+                           hspace=0.62, left=0.1, right=0.9, top=0.975, bottom=0.065)
+
+    # 1. header
+    ax = fig.add_subplot(gs[0]); ax.axis("off")
+    before = summary["periods"]["before_story_2026-05-11_to_10-28"]["ethics_negative_share"]
+    after = summary["periods"]["election_and_after_2026-11-03_to_11-11"]["ethics_negative_share"]
+    ax.text(0, 1.0, "NVIDIA HEADLINES · WSJ · NYT · THE ECONOMIST · MAY–NOV 2026", transform=ax.transAxes,
+            fontsize=10.5, fontweight="bold", color=T["muted"], va="top")
+    ax.text(0, 0.87, "How ethics coverage of\nJensen Huang turned", transform=ax.transAxes,
+            fontsize=24, fontweight="bold", color=T["ink"], va="top", linespacing=1.05)
+    ax.text(0, 0.17, f"{before:.0%}", transform=ax.transAxes, fontsize=44, fontweight="bold", color=T["muted"], va="bottom")
+    ax.text(0.2, 0.21, "ethics-negative\nbefore 29 Oct", transform=ax.transAxes, fontsize=11, color=T["muted"], va="bottom")
+    ax.text(0.47, 0.17, f"{after:.0%}", transform=ax.transAxes, fontsize=44, fontweight="bold", color=T["tone"][0], va="bottom")
+    ax.text(0.71, 0.21, "from the 3 Nov\nmidterms onward", transform=ax.transAxes, fontsize=11, color=T["ink"], va="bottom")
+    ax.text(0, 0.06, "The turn began 29 Oct, five days before the vote, when the spy-plot story broke.\n"
+            "The surge came 8–9 Nov, after Huang admitted an affair and the board opened a probe.",
+            transform=ax.transAxes, fontsize=10, color=T["muted"], va="top", linespacing=1.4)
+
+    def panel_title(ax, text):
+        ax.set_title(text, loc="left", fontsize=12.5, fontweight="bold", color=T["ink"], pad=26)
+
+    # 2. weekly ethics-negative share
+    ax = fig.add_subplot(gs[1])
+    for i, w in enumerate(weeks()):
+        g = [r for r in rows if in_week(r, w)]
+        if g:
+            share = sum(r["median_score"] < 0 for r in g) / len(g)
+            ax.bar(i, max(share, 0.012), width=0.74,
+                   color=T["tone"][0] if w + timedelta(days=6) >= STORY_BREAK else T["tone"][2])
+    ax.set_ylim(0, 1)
+    ax.set_yticks([0, 0.5, 1], ["0%", "50%", "100%"])
+    grid_y(ax); week_ticks(ax)
+    events(ax, week_x, base=1.03, step=0.11, fontsize=9)
+    panel_title(ax, "1  Share of headlines that are ethics-negative, per week")
+    ax.title.set_position((0, 1.30))
+
+    # 3. volume by outlet
+    ax = fig.add_subplot(gs[2])
+    top = 0
+    for i, w in enumerate(weeks()):
+        bottom = 0
+        for o in OUTLETS:
+            c = sum(1 for r in rows if r["outlet"] == o and in_week(r, w))
+            if c:
+                ax.bar(i, c, bottom=bottom, width=0.74, color=T["outlet"][o], edgecolor=T["bg"], linewidth=0.8)
+            bottom += c
+        top = max(top, bottom)
+    ax.set_ylim(0, top * 1.1)
+    grid_y(ax); week_ticks(ax)
+    events(ax, week_x, base=1.03, step=0.10, fontsize=9)
+    ax.annotate("110 headlines in the week of 9 Nov.\nBusiest earlier week: 31 (earnings).", (19.2, top * 0.72),
+                fontsize=9.5, color=T["muted"], ha="right", va="center")
+    totals = {o: sum(r["outlet"] == o for r in rows) for o in OUTLETS}
+    ax.legend([plt.Rectangle((0, 0), 1, 1, color=T["outlet"][o]) for o in OUTLETS],
+              [f"{o} ({totals[o]})" for o in OUTLETS], ncol=3, frameon=False, loc="upper left",
+              bbox_to_anchor=(0, 0.98), fontsize=9.5, handlelength=1, handleheight=1)
+    panel_title(ax, "2  Headlines per week, by outlet")
+    ax.title.set_position((0, 1.30))
+
+    # 4. monthly tone by outlet
+    ax = fig.add_subplot(gs[3])
+    months = [(2026, m) for m in range(5, 12)]
+    ax.axhline(0, color=T["grid"], lw=1.2)
+    for k, o in enumerate(OUTLETS):
+        xs, ys, ns, idx = [], [], [], []
+        for i, (y, m) in enumerate(months):
+            g = [r for r in rows if r["outlet"] == o and r["date"].month == m]
+            if g:
+                xs.append(i + (k - 1) * 0.06); ys.append(sum(r["median_score"] for r in g) / len(g))
+                ns.append(len(g)); idx.append(i)
+        for j in range(len(xs) - 1):
+            gap = idx[j + 1] - idx[j] > 1
+            ax.plot(xs[j:j + 2], ys[j:j + 2], color=T["outlet"][o], lw=1.2 if gap else 2,
+                    ls=(0, (3, 3)) if gap else "-", alpha=0.7 if gap else 1)
+        ax.scatter(xs, ys, s=[max(24, min(130, 10 * n)) for n in ns], color=T["outlet"][o],
+                   edgecolor=T["bg"], linewidth=1.5, zorder=3)
+        ax.annotate(f"{o}  {ys[-1]:+.2f}".replace("-", "−"), (xs[-1], ys[-1]), xytext=(9, 0),
+                    textcoords="offset points", va="center", fontsize=9.5, color=T["ink"])
+    ax.set_xticks(range(7), [date(2026, m, 1).strftime("%b") for _, m in months])
+    ax.set_xlim(-0.3, 8.2)
+    ax.set_ylim(-2.15, 0.35)
+    ax.set_yticks([-2, -1, 0], ["−2", "−1", "0"])
+    grid_y(ax)
+    ax.set_ylabel("Mean score (−2 to +2)")
+    ax.text(0, 1.0, "Dot size = headlines that month · dashed = a month with none", transform=ax.transAxes,
+            fontsize=9, color=T["muted"], va="bottom")
+    panel_title(ax, "3  Average ethics tone by outlet, per month (Nov = 1–11 Nov)")
+
+    # 5. normal week vs 9–11 Nov, by format
+    ax = fig.add_subplot(gs[4])
+    kinds = ["Articles", "Live-blog cards", "Podcasts & video", "Newsletters"]
+    kind_col = [T["ink"], T["muted"], T["tone"][2], T["grid"]]
+    pre_weeks = 24
+    labels, ypos = [], []
+    y = 0
+    for o in ["NYT", "WSJ"]:
+        pre = [r for r in rows if r["outlet"] == o and r["date"] < date(2026, 10, 26)]
+        surge = [r for r in rows if r["outlet"] == o and date(2026, 11, 9) <= r["date"] <= date(2026, 11, 11)]
+        for label, g, scale in ((f"{o}: a normal week, May–Oct", pre, pre_weeks), (f"{o}: 9–11 Nov (3 days)", surge, 1)):
+            left = 0.0
+            for kname, kc in zip(kinds, kind_col):
+                v = sum(content_kind(r["url"]) == kname for r in g) / scale
+                if v:
+                    ax.barh(y, v, left=left, height=0.62, color=kc, edgecolor=T["bg"], linewidth=0.8)
+                left += v
+            ax.text(left + 0.8, y, f"{left:.1f}" if scale > 1 else f"{int(left)}", va="center",
+                    fontsize=10, color=T["ink"], fontweight="bold")
+            ax.text(0, y + 0.42, label, fontsize=9.5, color=T["ink"], va="bottom")
+            y -= 1.25
+        y -= 0.35
+    ax.set_yticks([])
+    ax.set_ylim(y + 0.75, 0.95)
+    ax.spines["left"].set_visible(False)
+    ax.xaxis.grid(True, color=T["grid"], lw=0.8); ax.set_axisbelow(True)
+    ax.set_xlim(0, 72)
+    ax.legend([plt.Rectangle((0, 0), 1, 1, color=c) for c in kind_col], kinds, ncol=4, frameon=False,
+              loc="upper left", bbox_to_anchor=(-0.02, 1.16), fontsize=9, handlelength=1, handleheight=1)
+    panel_title(ax, "4  A normal week vs three days: NYT ran more articles on 9–11 Nov (30)\n    than in the previous 5½ months (25)")
+    ax.title.set_position((0, 1.12))
+
+    fig.text(0.1, 0.012,
+             f"Source: {corpus['headlines_listed_total']:,} WSJ, NYT and Economist headlines scanned, 11 May–11 Nov 2026; "
+             f"{len(rows)} mention Nvidia or Jensen,\neach scored by three independent raters. "
+             "github.com/twobitapps/nvidia-headlines-ethics-2026",
+             fontsize=8.5, color=T["muted"], va="bottom", linespacing=1.4)
+    fig.savefig(path)
+    plt.close(fig)
+
+
 # ---------- README headline list ----------
 
 TONE_MARK = {-2: "🟥", -1: "🟧", 0: "⬜", 1: "🟩", 2: "🟩"}
@@ -480,6 +639,8 @@ def main():
     use_theme(CHART_THEME)
     for name, draw in CHART_SET.items():
         draw(rows, summary, CHARTS / f"{name}.png")
+    use_theme(CHART_THEME)
+    poster(rows, summary, CHARTS / "summary.png")
     og_image(rows, summary, ROOT / "og-image.png")
     readme_table(rows)
     p = summary["periods"]
