@@ -28,6 +28,20 @@ Headlines about Huang himself went from a mean of −0.06 before 29 Oct (17 head
 
 ![Before and after by outlet](charts/by-outlet.png)
 
+### Volume, tone by outlet, and the raters
+
+The surge is mostly volume. WSJ ran 65 headlines in the week of 9 Nov, many of them live-blog cards, podcasts and newsletters re-headlining the same events. Its next-biggest week, 28 headlines, was the week of quarterly earnings in late August.
+
+![Headlines per week by outlet](charts/volume-by-outlet.png)
+
+All three outlets stayed close to zero until October. Of the two dailies, NYT turned first and furthest. The Economist's November value rests on three headlines, including its leader calling for Huang to resign.
+
+![Average ethics tone by outlet per month](charts/tone-by-outlet-monthly.png)
+
+The three raters' score distributions are nearly identical, so no single scorer drives the result.
+
+![Score distributions for the three raters](charts/rater-distributions.png)
+
 Every headline and its scores are listed [below](#headlines). An interactive version is in [`site/index.html`](site/index.html).
 
 ## Was the negativity written in?
