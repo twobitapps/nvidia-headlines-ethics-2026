@@ -1,0 +1,217 @@
+{
+  "headlines": 268,
+  "by_outlet": {
+    "NYT": {
+      "total": 80,
+      "before_2026-10-29": {
+        "n": 29,
+        "mean_score": -0.172,
+        "ethics_negative_share": 0.172,
+        "strongly_negative": 0,
+        "positive": 0
+      },
+      "from_2026-11-03": {
+        "n": 49,
+        "mean_score": -1.327,
+        "ethics_negative_share": 0.878,
+        "strongly_negative": 25,
+        "positive": 3
+      }
+    },
+    "The Economist": {
+      "total": 11,
+      "before_2026-10-29": {
+        "n": 8,
+        "mean_score": 0.0,
+        "ethics_negative_share": 0.0,
+        "strongly_negative": 0,
+        "positive": 0
+      },
+      "from_2026-11-03": {
+        "n": 3,
+        "mean_score": -2.0,
+        "ethics_negative_share": 1.0,
+        "strongly_negative": 3,
+        "positive": 0
+      }
+    },
+    "WSJ": {
+      "total": 177,
+      "before_2026-10-29": {
+        "n": 107,
+        "mean_score": -0.019,
+        "ethics_negative_share": 0.028,
+        "strongly_negative": 0,
+        "positive": 1
+      },
+      "from_2026-11-03": {
+        "n": 68,
+        "mean_score": -0.941,
+        "ethics_negative_share": 0.765,
+        "strongly_negative": 17,
+        "positive": 5
+      }
+    }
+  },
+  "periods": {
+    "before_story_2026-05-11_to_10-28": {
+      "n": 144,
+      "mean_score": -0.049,
+      "ethics_negative_share": 0.056,
+      "strongly_negative": 0,
+      "positive": 1
+    },
+    "story_breaks_2026-10-29_to_11-02": {
+      "n": 4,
+      "mean_score": -1.75,
+      "ethics_negative_share": 1.0,
+      "strongly_negative": 3,
+      "positive": 0
+    },
+    "election_and_after_2026-11-03_to_11-11": {
+      "n": 120,
+      "mean_score": -1.125,
+      "ethics_negative_share": 0.817,
+      "strongly_negative": 45,
+      "positive": 8
+    },
+    "of_which_2026-11-03_to_11-07": {
+      "n": 5,
+      "mean_score": -0.8,
+      "ethics_negative_share": 0.6,
+      "strongly_negative": 1,
+      "positive": 0
+    },
+    "of_which_2026-11-08_to_11-11": {
+      "n": 115,
+      "mean_score": -1.139,
+      "ethics_negative_share": 0.826,
+      "strongly_negative": 44,
+      "positive": 8
+    }
+  },
+  "per_rater": {
+    "rater_a": {
+      "before_story_2026-05-11_to_10-28": {
+        "n": 144,
+        "mean_score": -0.062,
+        "ethics_negative_share": 0.069,
+        "strongly_negative": 0,
+        "positive": 1
+      },
+      "story_breaks_2026-10-29_to_11-02": {
+        "n": 4,
+        "mean_score": -1.75,
+        "ethics_negative_share": 1.0,
+        "strongly_negative": 3,
+        "positive": 0
+      },
+      "election_and_after_2026-11-03_to_11-11": {
+        "n": 120,
+        "mean_score": -1.133,
+        "ethics_negative_share": 0.825,
+        "strongly_negative": 45,
+        "positive": 8
+      }
+    },
+    "rater_b": {
+      "before_story_2026-05-11_to_10-28": {
+        "n": 144,
+        "mean_score": -0.049,
+        "ethics_negative_share": 0.056,
+        "strongly_negative": 0,
+        "positive": 1
+      },
+      "story_breaks_2026-10-29_to_11-02": {
+        "n": 4,
+        "mean_score": -1.75,
+        "ethics_negative_share": 1.0,
+        "strongly_negative": 3,
+        "positive": 0
+      },
+      "election_and_after_2026-11-03_to_11-11": {
+        "n": 120,
+        "mean_score": -1.092,
+        "ethics_negative_share": 0.792,
+        "strongly_negative": 42,
+        "positive": 6
+      }
+    },
+    "rater_c": {
+      "before_story_2026-05-11_to_10-28": {
+        "n": 144,
+        "mean_score": -0.049,
+        "ethics_negative_share": 0.049,
+        "strongly_negative": 0,
+        "positive": 0
+      },
+      "story_breaks_2026-10-29_to_11-02": {
+        "n": 4,
+        "mean_score": -1.75,
+        "ethics_negative_share": 1.0,
+        "strongly_negative": 3,
+        "positive": 0
+      },
+      "election_and_after_2026-11-03_to_11-11": {
+        "n": 120,
+        "mean_score": -1.125,
+        "ethics_negative_share": 0.825,
+        "strongly_negative": 44,
+        "positive": 8
+      }
+    }
+  },
+  "about_huang": {
+    "before_story_2026-05-11_to_10-28": {
+      "n": 17,
+      "mean_score": -0.059,
+      "ethics_negative_share": 0.059,
+      "strongly_negative": 0,
+      "positive": 0
+    },
+    "story_breaks_2026-10-29_to_11-02": {
+      "n": 2,
+      "mean_score": -2.0,
+      "ethics_negative_share": 1.0,
+      "strongly_negative": 2,
+      "positive": 0
+    },
+    "election_and_after_2026-11-03_to_11-11": {
+      "n": 79,
+      "mean_score": -1.177,
+      "ethics_negative_share": 0.835,
+      "strongly_negative": 35,
+      "positive": 8
+    },
+    "of_which_2026-11-03_to_11-07": {
+      "n": 2,
+      "mean_score": -1.5,
+      "ethics_negative_share": 1.0,
+      "strongly_negative": 1,
+      "positive": 0
+    },
+    "of_which_2026-11-08_to_11-11": {
+      "n": 77,
+      "mean_score": -1.169,
+      "ethics_negative_share": 0.831,
+      "strongly_negative": 34,
+      "positive": 8
+    }
+  },
+  "agreement": {
+    "rater_a_vs_rater_b": {
+      "exact": 0.929,
+      "quadratic_weighted_kappa": 0.946
+    },
+    "rater_a_vs_rater_c": {
+      "exact": 0.944,
+      "quadratic_weighted_kappa": 0.958
+    },
+    "rater_b_vs_rater_c": {
+      "exact": 0.94,
+      "quadratic_weighted_kappa": 0.954
+    },
+    "all_three_identical": 243,
+    "max_spread": 1
+  }
+}
